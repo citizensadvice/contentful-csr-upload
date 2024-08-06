@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@contentful/app-scripts": "1.18.0",
-    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "14.0.0",
     "@vitejs/plugin-react": "4.0.1",
     "cross-env": "7.0.3",
