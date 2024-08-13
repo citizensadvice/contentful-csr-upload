@@ -60,7 +60,7 @@
     "lint-staged": "^15.2.8",
     "npm-audit-resolver": "^3.0.0-RC.0",
     "prettier": "^3.3.3",
-    "vite": "4.5.3",
+    "vite": "5.4.0",
     "vitest": "^2.0.5"
   },
   "homepage": "."
