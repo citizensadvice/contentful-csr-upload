@@ -8,6 +8,7 @@
     "@contentful/f36-icons": "^4.29.0",
     "@contentful/f36-tokens": "4.0.5",
     "@contentful/f36-workbench": "^4.21.1",
+    "@contentful/field-editor-slug": "^1.5.1",
     "@contentful/react-apps-toolkit": "1.2.16",
     "@reduxjs/toolkit": "^2.2.7",
     "contentful-management": "11.31.9",

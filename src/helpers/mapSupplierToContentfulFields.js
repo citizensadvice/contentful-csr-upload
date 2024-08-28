@@ -1,4 +1,5 @@
 import markdownToJson from "./markdownToJson";
+import { slugify } from "@contentful/field-editor-slug";
 
 const emptyContentfulSupplier = {
   fields: {
@@ -17,6 +18,7 @@ const emptyContentfulSupplier = {
     fuelMix: null,
     guaranteeList: null,
     openingHours: null,
+    slug: null,
   },
 };
 
@@ -55,12 +57,14 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.openingHours = {
     "en-GB": markdownToJson(supplier.openingHours),
   };
+  contentfulSupplier.fields.slug = {
+    "en-GB": slugify(supplier.name),
+  };
 
   return contentfulSupplier;
 };
 
 // TODO:
-// Slug field needs updating / setting
 
 // association to whitelabel supplier will be done in a separate PR
 // contentfulSupplier.fields.whitelabelSupplier = { 'en-GB': supplier.whiteLabelSupplierId };
