@@ -7,14 +7,19 @@ import { addContentfulSupplier } from "../../state/contentfulSupplierSlice";
 import SuppliersInFileAndContentful from "../SuppliersInFileAndContentful";
 import SuppliersNotInContentful from "../SuppliersNotInContentful";
 import SuppliersNotInFile from "../SuppliersNotInFile";
+import { createClient } from "contentful-management";
+import { useSDK } from "@contentful/react-apps-toolkit";
 
 const ProcessScreen = () => {
+  const sdk = useSDK();
+  const cma = createClient({ apiAdapter: sdk.cmaAdapter });
+
   const status = useSelector((state) => state.appStatus.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (status === AppStatus.FETCHING_CONTENTFUL_SUPPLIERS) {
-      getPublishedSuppliers().then((suppliers) => {
+      getPublishedSuppliers(cma).then((suppliers) => {
         suppliers.items.forEach((s) => {
           dispatch(
             addContentfulSupplier({
@@ -29,7 +34,7 @@ const ProcessScreen = () => {
 
       dispatch(setAppStatus(AppStatus.FETCHED_CONTENTFUL_SUPPLIERS));
     }
-  }, [status, dispatch]);
+  }, [status, dispatch, cma]);
 
   return (
     <React.Fragment>

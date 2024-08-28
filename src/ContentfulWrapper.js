@@ -1,11 +1,7 @@
-import * as contentful from "contentful-management";
 import mapSupplierToContentfulFields from "./helpers/mapSupplierToContentfulFields";
 
-const getPublishedSuppliers = async () => {
-  const client = contentful.createClient({
-    accessToken: import.meta.env.VITE_REACT_APP_CMA_TOKEN,
-  });
-  const space = await client.getSpace(
+const getPublishedSuppliers = async (cma) => {
+  const space = await cma.getSpace(
     import.meta.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID,
   );
   const env = await space.getEnvironment(
@@ -16,11 +12,8 @@ const getPublishedSuppliers = async () => {
   });
 };
 
-const updateSupplier = async (pair) => {
-  const client = contentful.createClient({
-    accessToken: import.meta.env.VITE_REACT_APP_CMA_TOKEN,
-  });
-  const space = await client.getSpace(
+const updateSupplier = async (pair, cma) => {
+  const space = await cma.getSpace(
     import.meta.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID,
   );
   const env = await space.getEnvironment(
@@ -36,11 +29,8 @@ const updateSupplier = async (pair) => {
   return contentfulSupplier.update();
 };
 
-const createSupplier = async (pair) => {
-  const client = contentful.createClient({
-    accessToken: import.meta.env.VITE_REACT_APP_CMA_TOKEN,
-  });
-  const space = await client.getSpace(
+const createSupplier = async (pair, cma) => {
+  const space = await cma.getSpace(
     import.meta.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID,
   );
   const env = await space.getEnvironment(

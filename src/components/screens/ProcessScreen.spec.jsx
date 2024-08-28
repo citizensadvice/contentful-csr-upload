@@ -4,6 +4,14 @@ import { renderWithProvider } from "../../../test/utils/render-with-provider";
 import ProcessScreen from "./ProcessScreen";
 import { FETCHING_CONTENTFUL_SUPPLIERS } from "../../constants/app-status";
 
+vi.mock("@contentful/react-apps-toolkit", () => {
+  return {
+    useSDK: () => {
+      return {};
+    },
+  };
+});
+
 // we don't want to actually call Contentful in the tests
 vi.mock("../../ContentfulWrapper.js", () => {
   return {

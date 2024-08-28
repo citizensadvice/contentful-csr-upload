@@ -20,8 +20,14 @@ import { setAppStatus } from "../../state/appStatusSlice";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
 import SuppliersToBeCreated from "../SuppliersToBeCreated";
 import SuppliersToBeUnpublished from "../SuppliersToBeUnpublished";
+import { useSDK } from "@contentful/react-apps-toolkit";
+import { createClient } from "contentful-management";
 
 const ScheduleScreen = () => {
+  const sdk = useSDK();
+
+  const cma = createClient({ apiAdapter: sdk.cmaAdapter });
+
   const dispatch = useDispatch();
   const status = useSelector((state) => state.appStatus.value);
 
@@ -31,7 +37,7 @@ const ScheduleScreen = () => {
   useEffect(() => {
     if (status === PROCESSING_SUPPLIERS) {
       suppliersToBeUpdated.forEach((pair) => {
-        updateSupplier(pair)
+        updateSupplier(pair, cma)
           .then(() => {
             dispatch(
               setSupplier({
@@ -52,7 +58,7 @@ const ScheduleScreen = () => {
       });
 
       suppliersToBeCreated.forEach((pair) => {
-        createSupplier(pair)
+        createSupplier(pair, cma)
           .then((result) => {
             console.log(result);
             dispatch(
@@ -76,7 +82,7 @@ const ScheduleScreen = () => {
 
       dispatch(setAppStatus(PROCESSED_SUPPLIERS));
     }
-  }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status]);
+  }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status, cma]);
 
   return (
     <Box marginTop="spacingXl" marginBottom="spacingXl">
