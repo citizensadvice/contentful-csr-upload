@@ -25,7 +25,7 @@ const ProcessSidebar = () => {
   const suppliersNotInContentful = useSelector(getSuppliersNotInContentful);
 
   const clickHandler = () => {
-    dispatch(setAppStatus(AppStatus.PROCESSING_SUPPLIERS));
+    dispatch(setAppStatus(AppStatus.PROCESS_SUPPLIERS));
     dispatch(setScreen(SCHEDULE));
   };
 

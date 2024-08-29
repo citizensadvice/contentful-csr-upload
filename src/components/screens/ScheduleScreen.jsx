@@ -7,6 +7,7 @@ import {
 } from "../../selectors";
 import { useEffect } from "react";
 import {
+  PROCESS_SUPPLIERS,
   PROCESSED_SUPPLIERS,
   PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
@@ -35,8 +36,9 @@ const ScheduleScreen = () => {
   const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
 
   useEffect(() => {
-    if (status === PROCESSING_SUPPLIERS) {
-      const contentfulActions = [];
+    const contentfulActions = [];
+
+    if (status === PROCESS_SUPPLIERS) {
       suppliersToBeUpdated.forEach((pair) => {
         contentfulActions.push(
           updateSupplier(pair, cma)
@@ -84,6 +86,8 @@ const ScheduleScreen = () => {
             }),
         );
       });
+
+      dispatch(setAppStatus(PROCESSING_SUPPLIERS));
 
       Promise.all(contentfulActions).then(() => {
         dispatch(setAppStatus(PROCESSED_SUPPLIERS));
