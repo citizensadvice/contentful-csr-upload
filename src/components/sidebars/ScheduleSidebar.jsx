@@ -16,8 +16,12 @@ import {
   Text,
 } from "@contentful/f36-components";
 import { ErrorCircleIcon } from "@contentful/f36-icons";
+import { useSelector } from "react-redux";
+import { PROCESSED_SUPPLIERS } from "../../constants/app-status";
 
 const ScheduleSidebar = () => {
+  const appStatus = useSelector((state) => state.appStatus.value);
+
   const [selectedDay, setSelectedDay] = useState(new Date());
   const [time, setTime] = useState("00:01");
 
@@ -38,6 +42,9 @@ const ScheduleSidebar = () => {
       setDate(newDate);
     }
   }, [selectedDay, time]);
+
+  const allowScheduling =
+    appStatus === PROCESSED_SUPPLIERS && error === undefined;
 
   return (
     <React.Fragment>
@@ -73,7 +80,7 @@ const ScheduleSidebar = () => {
               Publishing / unpublishing will happen on <DateTime date={date} />
             </Paragraph>
           )}
-          <Button variant="primary" isDisabled={error}>
+          <Button variant="primary" isDisabled={!allowScheduling}>
             Schedule Update
           </Button>
         </Stack>

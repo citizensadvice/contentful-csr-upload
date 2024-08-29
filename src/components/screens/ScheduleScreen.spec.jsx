@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { renderWithProvider } from "../../../test/utils/render-with-provider";
 import ScheduleScreen from "./ScheduleScreen";
 import {
+  PROCESS_SUPPLIERS,
   PROCESSED_SUPPLIERS,
   PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
@@ -38,7 +39,7 @@ describe("ScheduleScreen component", () => {
     preloadedState: {
       suppliers: { value: suppliers },
       contentfulSuppliers: { value: contentfulSuppliers },
-      appStatus: { value: PROCESSING_SUPPLIERS },
+      appStatus: { value: PROCESS_SUPPLIERS },
     },
   });
 
