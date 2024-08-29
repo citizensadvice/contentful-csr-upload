@@ -24,7 +24,7 @@ const ProcessScreen = () => {
           dispatch(
             addContentfulSupplier({
               contentfulId: s.sys.id,
-              id: s.fields.supplierId["en-GB"].toString(),
+              id: parseInt(s.fields.supplierId["en-GB"], 10),
               name: s.fields.name["en-GB"],
               dataAvailable: s.fields.dataAvailable["en-GB"],
             }),

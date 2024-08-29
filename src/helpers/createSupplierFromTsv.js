@@ -2,7 +2,7 @@ import { PARSED } from "../constants/supplier-status";
 
 const createSupplierFromTsv = (row) => {
   return {
-    id: row["SupplierId"],
+    id: parseInt(row["SupplierId"], 10),
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
     isSmall: isSmall(row["dataAvailable"]),
