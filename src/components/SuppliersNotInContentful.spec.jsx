@@ -7,6 +7,7 @@ import {
   suppliers,
   contentfulSuppliers,
 } from "../../test/fixtures/process-screen-state";
+import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
 
 describe("SuppliersNotInContentful component", () => {
   const { getByRole, queryByText } = renderWithProvider(
@@ -15,6 +16,7 @@ describe("SuppliersNotInContentful component", () => {
       preloadedState: {
         suppliers: { value: suppliers },
         contentfulSuppliers: { value: contentfulSuppliers },
+        appStatus: { value: FETCHED_CONTENTFUL_SUPPLIERS },
       },
     },
   );

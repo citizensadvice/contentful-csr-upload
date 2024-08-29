@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Skeleton } from "@contentful/f36-components";
 
-const LoadingTable = ({ children, rowCount, colCount, showOnStatus }) => {
+const LoadingTableRows = ({ children, rowCount, colCount, showOnStatus }) => {
   const appStatus = useSelector((state) => state.appStatus.value);
-  console.log(appStatus, showOnStatus);
   return appStatus === showOnStatus ? (
     children
   ) : (
@@ -12,4 +11,4 @@ const LoadingTable = ({ children, rowCount, colCount, showOnStatus }) => {
   );
 };
 
-export default LoadingTable;
+export default LoadingTableRows;

@@ -9,6 +9,8 @@ import {
   Table,
 } from "@contentful/f36-components";
 import { getType } from "../helpers/getType";
+import LoadingTableRows from "./LoadingTableRows";
+import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
 
 const SuppliersInFileAndContentful = () => {
   const suppliersInFileAndContentful = useSelector(
@@ -35,15 +37,21 @@ const SuppliersInFileAndContentful = () => {
             </Table.Row>
           </Table.Head>
           <Table.Body>
-            {suppliersInFileAndContentful.map((pair) => {
-              return (
-                <Table.Row key={pair.supplier.id}>
-                  <Table.Cell>{pair.supplier.name}</Table.Cell>
-                  <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
-                  <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
-                </Table.Row>
-              );
-            })}
+            <LoadingTableRows
+              colCount={3}
+              rowCount={3}
+              showOnStatus={FETCHED_CONTENTFUL_SUPPLIERS}
+            >
+              {suppliersInFileAndContentful.map((pair) => {
+                return (
+                  <Table.Row key={pair.supplier.id}>
+                    <Table.Cell>{pair.supplier.name}</Table.Cell>
+                    <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
+                    <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
+                  </Table.Row>
+                );
+              })}
+            </LoadingTableRows>
           </Table.Body>
         </Table>
       </React.Fragment>
@@ -58,7 +66,8 @@ const SuppliersInFileAndContentful = () => {
         renderMatchedSuppliers()
       ) : (
         <Paragraph>
-          No suppliers in the spreadsheet were found in Contentful
+          There are no suppliers in the spreadsheet that aren't already in
+          Contentful.
         </Paragraph>
       )}
     </Box>

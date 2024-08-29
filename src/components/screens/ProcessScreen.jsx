@@ -44,9 +44,8 @@ const ProcessScreen = () => {
             );
           }
         });
+        dispatch(setAppStatus(AppStatus.FETCHED_CONTENTFUL_SUPPLIERS));
       });
-
-      dispatch(setAppStatus(AppStatus.FETCHED_CONTENTFUL_SUPPLIERS));
     }
   }, [status, dispatch, cma]);
 

@@ -7,7 +7,7 @@ import {
 } from "../constants/app-status";
 import { Paragraph, Table } from "@contentful/f36-components";
 import { renderWithProvider } from "../../test/utils/render-with-provider";
-import { cleanup, getByText, queryByRole } from "@testing-library/react";
+import { cleanup } from "@testing-library/react";
 
 describe("LoadingTableComponent", () => {
   const loadingTable = (
