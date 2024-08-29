@@ -42,4 +42,40 @@ const createSupplier = async (pair, cma) => {
   return env.createEntry("energySupplier", contentfulFields);
 };
 
-export { getPublishedSuppliers, updateSupplier, createSupplier };
+const scheduleAction = async (id, iso_date, action, cma) => {
+  const space = await cma.getSpace(
+    import.meta.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID,
+  );
+  const env = await space.getEnvironment(
+    import.meta.env.VITE_REACT_APP_CONTENTFUL_ENV,
+  );
+
+  return space.createScheduledAction({
+    entity: {
+      sys: {
+        type: "Link",
+        linkType: "Entry",
+        id: id,
+      },
+    },
+    environment: {
+      sys: {
+        type: "Link",
+        linkType: "Environment",
+        id: env.sys.id,
+      },
+    },
+    action: action,
+    scheduledFor: {
+      datetime: iso_date,
+      timezone: "Europe/London",
+    },
+  });
+};
+
+export {
+  getPublishedSuppliers,
+  updateSupplier,
+  createSupplier,
+  scheduleAction,
+};

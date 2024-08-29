@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { PARSING_FINISHED } from "../constants/app-status";
+import { TO_BE_PUBLISHED } from "../constants/supplier-status";
 
 export const getCanMatch = createSelector(
   [
@@ -69,5 +70,27 @@ export const getContentfulSuppliersNotInFile = createSelector(
         };
       })
       .filter((pair) => pair.supplier === undefined);
+  },
+);
+
+export const getContentfulIdsToBePublished = createSelector(
+  [
+    (state) => state.suppliers.value,
+    (state) => state.contentfulSuppliers.value,
+  ],
+  (suppliers, contentfulSuppliers) => {
+    return suppliers
+      .filter((s) => s.status === TO_BE_PUBLISHED)
+      .map((s) => {
+        return {
+          supplier: s,
+          contentfulSupplier: contentfulSuppliers.find((cs) => cs.id === s.id),
+        };
+      })
+      .filter((pair) => pair.contentfulSupplier !== undefined)
+      .map(
+        (pair) =>
+          pair.supplier.newContentfulId || pair.contentfulSupplier.contentfulId,
+      );
   },
 );

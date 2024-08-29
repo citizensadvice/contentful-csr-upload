@@ -8,7 +8,6 @@ import {
   Paragraph,
   SectionHeading,
   Stack,
-  Subheading,
   TextInput,
   Datepicker,
   EntityStatusBadge,
@@ -16,11 +15,33 @@ import {
   Text,
 } from "@contentful/f36-components";
 import { ErrorCircleIcon } from "@contentful/f36-icons";
-import { useSelector } from "react-redux";
-import { PROCESSED_SUPPLIERS } from "../../constants/app-status";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  PROCESSED_SUPPLIERS,
+  SCHEDULE_UPDATES,
+  SCHEDULED_UPDATES,
+  SCHEDULING_UPDATES,
+} from "../../constants/app-status";
+import {
+  getContentfulIdsToBePublished,
+  getContentfulSuppliersNotInFile,
+} from "../../selectors";
+import { setAppStatus } from "../../state/appStatusSlice";
+import { scheduleAction } from "../../ContentfulWrapper";
+import { useSDK } from "@contentful/react-apps-toolkit";
+import { createClient } from "contentful-management";
 
 const ScheduleSidebar = () => {
+  const dispatch = useDispatch();
+  const sdk = useSDK();
+  const cma = createClient({ apiAdapter: sdk.cmaAdapter });
+
   const appStatus = useSelector((state) => state.appStatus.value);
+  const contentfulIdsToPublish = useSelector(getContentfulIdsToBePublished);
+  const suppliersToUnpublish = useSelector(getContentfulSuppliersNotInFile);
+  const contentfulIdsToUnpublish = suppliersToUnpublish.map(
+    (s) => s.contentfulSupplier.contentfulId,
+  );
 
   const [selectedDay, setSelectedDay] = useState(new Date());
   const [time, setTime] = useState("00:01");
@@ -39,9 +60,29 @@ const ScheduleSidebar = () => {
     if (Number.isNaN(parsedDate)) {
       setError("Enter a valid date and time (HH:SS)");
     } else {
-      setDate(newDate);
+      setDate(newDate.toISOString());
     }
   }, [selectedDay, time]);
+
+  useEffect(() => {
+    if (appStatus === SCHEDULE_UPDATES) {
+      const contentfulActions = [];
+
+      contentfulIdsToPublish.forEach((id) => {
+        contentfulActions.push(scheduleAction(id, date, "publish", cma));
+      });
+
+      contentfulIdsToUnpublish.forEach((id) => {
+        contentfulActions.push(scheduleAction(id, date, "unpublish", cma));
+      });
+
+      dispatch(setAppStatus(SCHEDULING_UPDATES));
+
+      Promise.all(contentfulActions).then(() =>
+        dispatch(setAppStatus(SCHEDULED_UPDATES)),
+      );
+    }
+  });
 
   const allowScheduling =
     appStatus === PROCESSED_SUPPLIERS && error === undefined;
@@ -80,7 +121,11 @@ const ScheduleSidebar = () => {
               Publishing / unpublishing will happen on <DateTime date={date} />
             </Paragraph>
           )}
-          <Button variant="primary" isDisabled={!allowScheduling}>
+          <Button
+            variant="primary"
+            isDisabled={!allowScheduling}
+            onClick={() => dispatch(setAppStatus("SCHEDULE_UPDATES"))}
+          >
             Schedule Update
           </Button>
         </Stack>

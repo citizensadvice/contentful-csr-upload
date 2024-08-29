@@ -5,3 +5,6 @@ export const FETCHED_CONTENTFUL_SUPPLIERS = "fetchedContentfulSuppliers";
 export const PROCESS_SUPPLIERS = "processSuppliers";
 export const PROCESSING_SUPPLIERS = "processingSuppliers";
 export const PROCESSED_SUPPLIERS = "processedSuppliers";
+export const SCHEDULE_UPDATES = "scheduleUpdates";
+export const SCHEDULING_UPDATES = "schedulingUpdates";
+export const SCHEDULED_UPDATES = "scheduledUpdates";
