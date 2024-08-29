@@ -9,6 +9,7 @@ export const expectedFields = {
   contactRating: { "en-GB": 3 },
   guaranteeRating: { "en-GB": 4.32 },
   supplierId: { "en-GB": 1 },
+  slug: { "en-GB": "test-supplier" },
   contactInfo: {
     "en-GB": {
       nodeType: "document",

@@ -2,9 +2,10 @@ import { PARSED } from "../constants/supplier-status";
 
 const createSupplierFromTsv = (row) => {
   return {
-    id: row["SupplierId"],
+    id: parseInt(row["SupplierId"], 10),
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
+    whitelabelSupplierContentfulId: undefined,
     isSmall: isSmall(row["dataAvailable"]),
     rank: parseInt(row["supplierRank"], 10),
     overallRating: Number(row["overallRating"]),

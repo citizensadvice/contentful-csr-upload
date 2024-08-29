@@ -66,4 +66,22 @@ describe("mapSupplierToContentfulFields", () => {
       expectedSupplierFields,
     );
   });
+
+  it("adds whitelabel supplier entry link when whitelabelSupplierContentfulId is present on the supplier", () => {
+    const testWhitelabelledSupplier = {
+      ...testSupplier,
+      ...{ whitelabelSupplierContentfulId: "12345" },
+    };
+    const whitelabelField = {
+      "en-GB": { sys: { type: "Link", linkType: "Entry", id: "12345" } },
+    };
+    const expectedWhitelabelledSupplierFields = {
+      ...expectedFields,
+      ...{ whitelabelSupplier: whitelabelField },
+    };
+
+    expect(
+      mapSupplierToContentfulFields(testWhitelabelledSupplier).fields,
+    ).toEqual(expectedWhitelabelledSupplierFields);
+  });
 });
