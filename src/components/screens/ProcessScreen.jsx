@@ -37,7 +37,7 @@ const ProcessScreen = () => {
           ) {
             dispatch(
               setWhitelabelSupplierId({
-                id: s.fields.supplierId["en-GB"],
+                id: parseInt(s.fields.supplierId["en-GB"], 10),
                 whitelabelSupplierContentfulId:
                   s.fields.whitelabelSupplier["en-GB"].sys.id,
               }),
