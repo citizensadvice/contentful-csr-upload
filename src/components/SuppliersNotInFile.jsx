@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
 import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
 import { getType } from "../helpers/getType";
+import LoadingTableRows from "./LoadingTableRows";
+import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
 
 const SuppliersNotInFile = () => {
   const suppliersNotInFile = useSelector(getContentfulSuppliersNotInFile);
@@ -17,16 +19,22 @@ const SuppliersNotInFile = () => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {suppliersNotInFile.map((pair) => {
-            return (
-              <Table.Row key={pair.contentfulSupplier.name}>
-                <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
-                <Table.Cell>
-                  {getType(!pair.contentfulSupplier.dataAvailable)}
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
+          <LoadingTableRows
+            showOnStatus={FETCHED_CONTENTFUL_SUPPLIERS}
+            rowCount={3}
+            colCount={2}
+          >
+            {suppliersNotInFile.map((pair) => {
+              return (
+                <Table.Row key={pair.contentfulSupplier.name}>
+                  <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
+                  <Table.Cell>
+                    {getType(!pair.contentfulSupplier.dataAvailable)}
+                  </Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </LoadingTableRows>
         </Table.Body>
       </Table>
     );

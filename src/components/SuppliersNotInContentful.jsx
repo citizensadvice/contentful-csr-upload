@@ -9,6 +9,8 @@ import {
   Table,
 } from "@contentful/f36-components";
 import { getType } from "../helpers/getType";
+import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
+import LoadingTableRows from "./LoadingTableRows";
 
 const SuppliersNotInContentful = () => {
   const suppliersNotInContentful = useSelector(getSuppliersNotInContentful);
@@ -23,14 +25,20 @@ const SuppliersNotInContentful = () => {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {suppliersNotInContentful.map((pair) => {
-            return (
-              <Table.Row key={pair.supplier.id}>
-                <Table.Cell>{pair.supplier.name}</Table.Cell>
-                <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
-              </Table.Row>
-            );
-          })}
+          <LoadingTableRows
+            colCount={3}
+            rowCount={3}
+            showOnStatus={FETCHED_CONTENTFUL_SUPPLIERS}
+          >
+            {suppliersNotInContentful.map((pair) => {
+              return (
+                <Table.Row key={pair.supplier.id}>
+                  <Table.Cell>{pair.supplier.name}</Table.Cell>
+                  <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
+                </Table.Row>
+              );
+            })}
+          </LoadingTableRows>
         </Table.Body>
       </Table>
     );
