@@ -61,12 +61,19 @@ const mapSupplierToContentfulFields = (
     "en-GB": slugify(supplier.name),
   };
 
+  if (supplier.whitelabelSupplierContentfulId) {
+    contentfulSupplier.fields["whitelabelSupplier"] = {
+      "en-GB": {
+        sys: {
+          type: "Link",
+          linkType: "Entry",
+          id: supplier.whitelabelSupplierContentfulId,
+        },
+      },
+    };
+  }
+
   return contentfulSupplier;
 };
-
-// TODO:
-
-// association to whitelabel supplier will be done in a separate PR
-// contentfulSupplier.fields.whitelabelSupplier = { 'en-GB': supplier.whiteLabelSupplierId };
 
 export default mapSupplierToContentfulFields;

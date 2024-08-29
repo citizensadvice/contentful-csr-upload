@@ -9,6 +9,7 @@ import SuppliersNotInContentful from "../SuppliersNotInContentful";
 import SuppliersNotInFile from "../SuppliersNotInFile";
 import { createClient } from "contentful-management";
 import { useSDK } from "@contentful/react-apps-toolkit";
+import { setWhitelabelSupplierId } from "../../state/supplierSlice";
 
 const ProcessScreen = () => {
   const sdk = useSDK();
@@ -29,6 +30,19 @@ const ProcessScreen = () => {
               dataAvailable: s.fields.dataAvailable["en-GB"],
             }),
           );
+
+          if (
+            s.fields.whitelabelSupplier &&
+            s.fields.whitelabelSupplier["en-GB"]
+          ) {
+            dispatch(
+              setWhitelabelSupplierId({
+                id: s.fields.supplierId["en-GB"],
+                whitelabelSupplierContentfulId:
+                  s.fields.whitelabelSupplier["en-GB"].sys.id,
+              }),
+            );
+          }
         });
       });
 
