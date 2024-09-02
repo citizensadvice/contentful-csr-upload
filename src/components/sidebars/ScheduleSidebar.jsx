@@ -112,6 +112,7 @@ const ScheduleSidebar = () => {
           <Datepicker selected={selectedDay} onSelect={setSelectedDay} />
           <TextInput
             type="text"
+            aria-label="Enter time"
             placeholder="HH:MM"
             onBlur={(e) => setTime(e.target.value)}
             isInvalid={error}
