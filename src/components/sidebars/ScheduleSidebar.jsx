@@ -94,15 +94,17 @@ const ScheduleSidebar = () => {
         <Paragraph marginBottom="spacingM">After the event happens:</Paragraph>
         <List>
           <ListItem>
-            20 suppliers will be <EntityStatusBadge entityStatus="published" />
+            {contentfulIdsToPublish.length} suppliers will be{" "}
+            <EntityStatusBadge entityStatus="published" />
           </ListItem>
           <ListItem>
-            3 suppliers will be <Badge variant="warning">Draft</Badge>
+            {contentfulIdsToUnpublish.length} suppliers will be{" "}
+            <Badge variant="warning">Draft</Badge>
           </ListItem>
         </List>
       </Box>
       <Box marginTop="spacingM">
-        <Stack flexDirection="column">
+        <Stack flexDirection="column" alignItems="start">
           <Datepicker selected={selectedDay} onSelect={setSelectedDay} />
           <TextInput
             type="text"
@@ -117,9 +119,14 @@ const ScheduleSidebar = () => {
               <Text fontColor="red600">{error}</Text>
             </Stack>
           ) : (
-            <Paragraph>
-              Publishing / unpublishing will happen on <DateTime date={date} />
-            </Paragraph>
+            <React.Fragment>
+              <Paragraph>Publishing / unpublishing will happen on:</Paragraph>
+              <Paragraph>
+                <strong>
+                  <DateTime date={date} />
+                </strong>
+              </Paragraph>
+            </React.Fragment>
           )}
           <Button
             variant="primary"
