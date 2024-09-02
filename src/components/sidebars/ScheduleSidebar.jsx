@@ -23,6 +23,7 @@ import {
   SCHEDULING_UPDATES,
 } from "../../constants/app-status";
 import {
+  getAllContentfulActionsSuccessful,
   getContentfulIdsToBePublished,
   getContentfulSuppliersNotInFile,
 } from "../../selectors";
@@ -42,6 +43,7 @@ const ScheduleSidebar = () => {
   const contentfulIdsToUnpublish = suppliersToUnpublish.map(
     (s) => s.contentfulSupplier.contentfulId,
   );
+  const uploadsSuccessful = useSelector(getAllContentfulActionsSuccessful);
 
   const [selectedDay, setSelectedDay] = useState(new Date());
   const [time, setTime] = useState("00:01");
@@ -85,7 +87,9 @@ const ScheduleSidebar = () => {
   });
 
   const allowScheduling =
-    appStatus === PROCESSED_SUPPLIERS && error === undefined;
+    appStatus === PROCESSED_SUPPLIERS &&
+    uploadsSuccessful &&
+    error === undefined;
 
   return (
     <React.Fragment>
@@ -131,7 +135,7 @@ const ScheduleSidebar = () => {
           <Button
             variant="primary"
             isDisabled={!allowScheduling}
-            onClick={() => dispatch(setAppStatus("SCHEDULE_UPDATES"))}
+            onClick={() => dispatch(setAppStatus(SCHEDULE_UPDATES))}
           >
             Schedule Update
           </Button>

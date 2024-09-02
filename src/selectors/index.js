@@ -1,6 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { PARSING_FINISHED } from "../constants/app-status";
-import { TO_BE_PUBLISHED } from "../constants/supplier-status";
+import {
+  CONTENTFUL_PUT_ERROR,
+  TO_BE_PUBLISHED,
+} from "../constants/supplier-status";
 
 export const getCanMatch = createSelector(
   [
@@ -92,5 +95,12 @@ export const getContentfulIdsToBePublished = createSelector(
         (pair) =>
           pair.supplier.newContentfulId || pair.contentfulSupplier.contentfulId,
       );
+  },
+);
+
+export const getAllContentfulActionsSuccessful = createSelector(
+  (state) => state.suppliers.value,
+  (suppliers) => {
+    return suppliers.every((s) => s.status !== CONTENTFUL_PUT_ERROR);
   },
 );
