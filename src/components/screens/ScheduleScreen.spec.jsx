@@ -5,7 +5,6 @@ import ScheduleScreen from "./ScheduleScreen";
 import {
   PROCESS_SUPPLIERS,
   PROCESSED_SUPPLIERS,
-  PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
 
 import {

@@ -7,11 +7,10 @@ import {
   contentfulSuppliers,
 } from "../../../test/fixtures/schedule-sidebar-state";
 import * as AppStatus from "../../constants/app-status";
-import { cleanup, getByText } from "@testing-library/react";
+import { cleanup } from "@testing-library/react";
 import dateFormat from "dateformat";
 import { userEvent } from "@testing-library/user-event";
 import { scheduleAction } from "../../ContentfulWrapper";
-import { createClient } from "contentful-management";
 
 vi.mock("contentful-management", () => {
   return {

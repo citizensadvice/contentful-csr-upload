@@ -1,9 +1,4 @@
-import {
-  CONTENTFUL_PUT_ERROR,
-  PARSED,
-  TO_BE_PUBLISHED,
-  TO_BE_UNPUBLISHED,
-} from "../../src/constants/supplier-status";
+import { TO_BE_PUBLISHED } from "../../src/constants/supplier-status";
 
 const suppliers = [
   {
