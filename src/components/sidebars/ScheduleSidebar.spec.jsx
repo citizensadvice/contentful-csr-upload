@@ -92,7 +92,7 @@ describe("ScheduleSidebar Component", () => {
 
     await user.tab(dateInput);
 
-    expect(getByText("Enter a valid date and time (HH:SS)")).toBeTruthy();
+    expect(getByText("Enter a valid date and time (HH:MM)")).toBeTruthy();
     expect(
       getByRole("button", { name: "Schedule Update", disabled: true }),
     ).toBeTruthy();
@@ -121,7 +121,7 @@ describe("ScheduleSidebar Component", () => {
     await user.keyboard("I am not a time");
     await user.tab(timeInput);
 
-    expect(getByText("Enter a valid date and time (HH:SS)")).toBeTruthy();
+    expect(getByText("Enter a valid date and time (HH:MM)")).toBeTruthy();
     expect(
       getByRole("button", { name: "Schedule Update", disabled: true }),
     ).toBeTruthy();

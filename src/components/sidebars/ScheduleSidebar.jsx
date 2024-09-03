@@ -60,7 +60,7 @@ const ScheduleSidebar = () => {
     const parsedDate = Date.parse(newDate);
 
     if (Number.isNaN(parsedDate)) {
-      setError("Enter a valid date and time (HH:SS)");
+      setError("Enter a valid date and time (HH:MM)");
     } else {
       setDate(newDate.toISOString());
     }
