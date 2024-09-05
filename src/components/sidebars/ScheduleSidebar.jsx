@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Badge,
   Box,
-  Button,
   List,
   ListItem,
   Paragraph,
   SectionHeading,
-  Stack,
-  TextInput,
-  Datepicker,
   EntityStatusBadge,
-  DateTime,
-  Text,
 } from "@contentful/f36-components";
-import { ErrorCircleIcon } from "@contentful/f36-icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  PROCESSED_SUPPLIERS,
   SCHEDULE_UPDATES,
   SCHEDULED_UPDATES,
   SCHEDULING_UPDATES,
 } from "../../constants/app-status";
 import {
-  getAllContentfulActionsSuccessful,
   getContentfulIdsToBePublished,
   getContentfulSuppliersNotInFile,
 } from "../../selectors";
@@ -31,6 +22,7 @@ import { setAppStatus } from "../../state/appStatusSlice";
 import { scheduleAction } from "../../ContentfulWrapper";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { createClient } from "contentful-management";
+import SchedulingForm from "../SchedulingForm";
 
 const ScheduleSidebar = () => {
   const dispatch = useDispatch();
@@ -38,33 +30,12 @@ const ScheduleSidebar = () => {
   const cma = createClient({ apiAdapter: sdk.cmaAdapter });
 
   const appStatus = useSelector((state) => state.appStatus.value);
+  const date = useSelector((state) => state.scheduleTime.value);
   const contentfulIdsToPublish = useSelector(getContentfulIdsToBePublished);
   const suppliersToUnpublish = useSelector(getContentfulSuppliersNotInFile);
   const contentfulIdsToUnpublish = suppliersToUnpublish.map(
     (s) => s.contentfulSupplier.contentfulId,
   );
-  const uploadsSuccessful = useSelector(getAllContentfulActionsSuccessful);
-
-  const [selectedDay, setSelectedDay] = useState(new Date());
-  const [time, setTime] = useState("00:01");
-
-  const [date, setDate] = useState();
-  const [error, setError] = useState();
-
-  useEffect(() => {
-    setError();
-
-    const [hours, minutes] = time.split(":");
-    let newDate = new Date(selectedDay);
-    newDate.setHours(hours, minutes);
-    const parsedDate = Date.parse(newDate);
-
-    if (Number.isNaN(parsedDate)) {
-      setError("Enter a valid date and time (HH:MM)");
-    } else {
-      setDate(newDate.toISOString());
-    }
-  }, [selectedDay, time]);
 
   useEffect(() => {
     if (appStatus === SCHEDULE_UPDATES) {
@@ -86,11 +57,6 @@ const ScheduleSidebar = () => {
     }
   });
 
-  const allowScheduling =
-    appStatus === PROCESSED_SUPPLIERS &&
-    uploadsSuccessful &&
-    error === undefined;
-
   return (
     <React.Fragment>
       <Box marginTop="spacingM">
@@ -107,41 +73,7 @@ const ScheduleSidebar = () => {
           </ListItem>
         </List>
       </Box>
-      <Box marginTop="spacingM">
-        <Stack flexDirection="column" alignItems="start">
-          <Datepicker selected={selectedDay} onSelect={setSelectedDay} />
-          <TextInput
-            type="text"
-            aria-label="Enter time"
-            placeholder="HH:MM"
-            onBlur={(e) => setTime(e.target.value)}
-            isInvalid={error}
-            pattern="0..9"
-          />
-          {error ? (
-            <Stack alignItems="top">
-              <ErrorCircleIcon variant="negative" />
-              <Text fontColor="red600">{error}</Text>
-            </Stack>
-          ) : (
-            <React.Fragment>
-              <Paragraph>Publishing / unpublishing will happen on:</Paragraph>
-              <Paragraph>
-                <strong>
-                  <DateTime date={date} />
-                </strong>
-              </Paragraph>
-            </React.Fragment>
-          )}
-          <Button
-            variant="primary"
-            isDisabled={!allowScheduling}
-            onClick={() => dispatch(setAppStatus(SCHEDULE_UPDATES))}
-          >
-            Schedule Update
-          </Button>
-        </Stack>
-      </Box>
+      <SchedulingForm />
     </React.Fragment>
   );
 };

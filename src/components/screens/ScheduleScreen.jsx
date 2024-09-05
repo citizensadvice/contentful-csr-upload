@@ -66,7 +66,6 @@ const ScheduleScreen = () => {
         contentfulActions.push(
           createSupplier(pair, cma)
             .then((result) => {
-              console.log(result);
               dispatch(
                 setSupplier({
                   supplierId: pair.supplier.id,
