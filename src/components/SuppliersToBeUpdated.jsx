@@ -5,6 +5,7 @@ import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import UpdateResult from "./UpdateResult";
+import ScheduleResult from "./ScheduleResult";
 
 const SuppliersToBeUpdated = () => {
   const suppliersToBeUpdated = useSelector(getMatchedSuppliersInContentful);
@@ -28,6 +29,7 @@ const SuppliersToBeUpdated = () => {
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="published" />
           </LoadingTableCell>
+          <ScheduleResult contentfulId={pair.contentfulSupplier.contentfulId} />
           <Table.Cell>
             <TextLink
               onClick={() =>

@@ -104,3 +104,15 @@ export const getAllContentfulActionsSuccessful = createSelector(
     return suppliers.every((s) => s.status !== CONTENTFUL_PUT_ERROR);
   },
 );
+
+export const getError = createSelector(
+  [
+    (state) => state.contentfulErrors.value,
+    (state, contentfulId) => contentfulId,
+    (state, contentfulId, errorType) => errorType,
+  ],
+  (contentfulErrors, contentfulId, errorType) =>
+    contentfulErrors.find(
+      (e) => e.errorType === errorType && e.contentfulId === contentfulId,
+    ),
+);

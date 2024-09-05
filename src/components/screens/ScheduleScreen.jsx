@@ -105,9 +105,10 @@ const ScheduleScreen = () => {
         <Table.Head>
           <Table.Row>
             <Table.Cell>Supplier</Table.Cell>
+            <Table.Cell>Update result</Table.Cell>
             <Table.Cell>Current Status</Table.Cell>
             <Table.Cell>Status after events</Table.Cell>
-            <Table.Cell>Result</Table.Cell>
+            <Table.Cell>Scheduling result</Table.Cell>
             <Table.Cell>Action</Table.Cell>
           </Table.Row>
         </Table.Head>
