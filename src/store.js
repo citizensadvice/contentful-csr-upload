@@ -6,6 +6,7 @@ import uploadErrorsReducer from "./state/uploadErrorsSlice";
 import appStatusReducer from "./state/appStatusSlice";
 import contentfulSuppliersReducer from "./state/contentfulSupplierSlice";
 import scheduleTimeReducer from "./state/scheduleTimeSlice";
+import contentfulErrorReducer from "./state/contentfulErrorsSlice";
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   appStatus: appStatusReducer,
   contentfulSuppliers: contentfulSuppliersReducer,
   scheduleTime: scheduleTimeReducer,
+  contentfulErrors: contentfulErrorReducer,
 });
 
 export const setupStore = (preloadedState) => {

@@ -23,6 +23,8 @@ import { scheduleAction } from "../../ContentfulWrapper";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { createClient } from "contentful-management";
 import SchedulingForm from "../SchedulingForm";
+import { addContentfulError } from "../../state/contentfulErrorsSlice";
+import { SCHEDULED_ACTION_PUT_ERROR } from "../../constants/error-types";
 
 const ScheduleSidebar = () => {
   const dispatch = useDispatch();
@@ -42,11 +44,31 @@ const ScheduleSidebar = () => {
       const contentfulActions = [];
 
       contentfulIdsToPublish.forEach((id) => {
-        contentfulActions.push(scheduleAction(id, date, "publish", cma));
+        contentfulActions.push(
+          scheduleAction(id, date, "publish", cma).catch((error) => {
+            dispatch(
+              addContentfulError({
+                errorType: SCHEDULED_ACTION_PUT_ERROR,
+                error: error.message,
+                contentfulId: id,
+              }),
+            );
+          }),
+        );
       });
 
       contentfulIdsToUnpublish.forEach((id) => {
-        contentfulActions.push(scheduleAction(id, date, "unpublish", cma));
+        contentfulActions.push(
+          scheduleAction(id, date, "unpublish", cma).catch((error) => {
+            dispatch(
+              addContentfulError({
+                errorType: SCHEDULED_ACTION_PUT_ERROR,
+                error: error.message,
+                contentfulId: id,
+              }),
+            );
+          }),
+        );
       });
 
       dispatch(setAppStatus(SCHEDULING_UPDATES));
