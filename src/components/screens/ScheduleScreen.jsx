@@ -7,6 +7,7 @@ import {
 } from "../../selectors";
 import { useEffect } from "react";
 import {
+  PROCESS_SUPPLIERS,
   PROCESSED_SUPPLIERS,
   PROCESSING_SUPPLIERS,
 } from "../../constants/app-status";
@@ -35,52 +36,61 @@ const ScheduleScreen = () => {
   const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
 
   useEffect(() => {
-    if (status === PROCESSING_SUPPLIERS) {
+    const contentfulActions = [];
+
+    if (status === PROCESS_SUPPLIERS) {
       suppliersToBeUpdated.forEach((pair) => {
-        updateSupplier(pair, cma)
-          .then(() => {
-            dispatch(
-              setSupplier({
-                supplierId: pair.supplier.id,
-                status: TO_BE_PUBLISHED,
-              }),
-            );
-          })
-          .catch((error) => {
-            dispatch(
-              setSupplier({
-                supplierId: pair.supplier.id,
-                status: CONTENTFUL_PUT_ERROR,
-              }),
-            );
-            console.error(error.message);
-          });
+        contentfulActions.push(
+          updateSupplier(pair, cma)
+            .then(() => {
+              dispatch(
+                setSupplier({
+                  supplierId: pair.supplier.id,
+                  status: TO_BE_PUBLISHED,
+                }),
+              );
+            })
+            .catch((error) => {
+              dispatch(
+                setSupplier({
+                  supplierId: pair.supplier.id,
+                  status: CONTENTFUL_PUT_ERROR,
+                }),
+              );
+              console.error(error.message);
+            }),
+        );
       });
 
       suppliersToBeCreated.forEach((pair) => {
-        createSupplier(pair, cma)
-          .then((result) => {
-            console.log(result);
-            dispatch(
-              setSupplier({
-                supplierId: pair.supplier.id,
-                newContentfulId: result.sys.id,
-                status: TO_BE_PUBLISHED,
-              }),
-            );
-          })
-          .catch((error) => {
-            dispatch(
-              setSupplier({
-                supplierId: pair.supplier.id,
-                status: CONTENTFUL_PUT_ERROR,
-              }),
-            );
-            console.error(error.message);
-          });
+        contentfulActions.push(
+          createSupplier(pair, cma)
+            .then((result) => {
+              dispatch(
+                setSupplier({
+                  supplierId: pair.supplier.id,
+                  newContentfulId: result.sys.id,
+                  status: TO_BE_PUBLISHED,
+                }),
+              );
+            })
+            .catch((error) => {
+              dispatch(
+                setSupplier({
+                  supplierId: pair.supplier.id,
+                  status: CONTENTFUL_PUT_ERROR,
+                }),
+              );
+              console.error(error.message);
+            }),
+        );
       });
 
-      dispatch(setAppStatus(PROCESSED_SUPPLIERS));
+      dispatch(setAppStatus(PROCESSING_SUPPLIERS));
+
+      Promise.all(contentfulActions).then(() => {
+        dispatch(setAppStatus(PROCESSED_SUPPLIERS));
+      });
     }
   }, [suppliersToBeCreated, suppliersToBeUpdated, dispatch, status, cma]);
 

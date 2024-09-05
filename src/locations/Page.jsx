@@ -9,6 +9,7 @@ import MatchSidebar from "../components/sidebars/MatchSidebar";
 import ProcessScreen from "../components/screens/ProcessScreen";
 import ProcessSidebar from "../components/sidebars/ProcessSidebar";
 import ScheduleScreen from "../components/screens/ScheduleScreen";
+import ScheduleSidebar from "../components/sidebars/ScheduleSidebar";
 
 const Page = () => {
   const screen = useSelector((state) => state.screen.value);
@@ -36,6 +37,8 @@ const Page = () => {
         return <MatchSidebar></MatchSidebar>;
       case Screens.PROCESS:
         return <ProcessSidebar></ProcessSidebar>;
+      case Screens.SCHEDULE:
+        return <ScheduleSidebar></ScheduleSidebar>;
     }
   };
 
