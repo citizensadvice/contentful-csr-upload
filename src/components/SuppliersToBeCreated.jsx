@@ -5,6 +5,7 @@ import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import UpdateResult from "./UpdateResult";
+import ScheduleResult from "./ScheduleResult";
 
 const SuppliersToBeCreated = () => {
   const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
@@ -28,6 +29,7 @@ const SuppliersToBeCreated = () => {
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="published" />
           </LoadingTableCell>
+          <ScheduleResult id={pair.supplier.id} status={pair.supplier.status} />
           <Table.Cell>
             <TextLink
               onClick={() =>
