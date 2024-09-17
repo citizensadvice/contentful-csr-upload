@@ -104,11 +104,9 @@ export const getAllContentfulActionsSuccessful = createSelector(
 export const getError = createSelector(
   [
     (state) => state.contentfulErrors.value,
-    (state, contentfulId) => contentfulId,
-    (state, contentfulId, errorType) => errorType,
+    (state, id) => id,
+    (state, id, errorType) => errorType,
   ],
-  (contentfulErrors, contentfulId, errorType) =>
-    contentfulErrors.find(
-      (e) => e.errorType === errorType && e.contentfulId === contentfulId,
-    ),
+  (contentfulErrors, id, errorType) =>
+    contentfulErrors.find((e) => e.errorType === errorType && e.id === id),
 );

@@ -13,16 +13,17 @@ import { getError } from "../selectors";
 import { SCHEDULED_ACTION_PUT_ERROR } from "../constants/error-types";
 import { MissingContent } from "@contentful/f36-components";
 import React, { useState } from "react";
-import { ErrorCircleIcon } from "@contentful/f36-icons";
+import { DoneIcon, ErrorCircleIcon } from "@contentful/f36-icons";
+import { ACTION_SCHEDULED } from "../constants/supplier-status";
 
-const ScheduleResult = ({ contentfulId }) => {
+const ScheduleResult = ({ id, status }) => {
   const error = useSelector((state) =>
-    getError(state, contentfulId, SCHEDULED_ACTION_PUT_ERROR),
+    getError(state, id, SCHEDULED_ACTION_PUT_ERROR),
   );
   const [showModal, setShowModal] = useState(false);
 
   const renderError = () => (
-    <React.Fragment>
+    <Table.Cell>
       <Stack flexDirection="row" alignItems="center">
         <ErrorCircleIcon variant="negative" />
         <TextLink variant="negative" onClick={() => setShowModal(true)}>
@@ -45,7 +46,7 @@ const ScheduleResult = ({ contentfulId }) => {
                 <Subheading>Error messages</Subheading>
                 <List>
                   {JSON.parse(error.error).details.errors.map((e) => (
-                    <ListItem>{e.details}</ListItem>
+                    <ListItem key={e.details}>{e.details}</ListItem>
                   ))}
                 </List>
               </Box>
@@ -57,10 +58,27 @@ const ScheduleResult = ({ contentfulId }) => {
           </>
         )}
       </Modal>
-    </React.Fragment>
+    </Table.Cell>
   );
 
-  return <Table.Cell>{error ? renderError() : <MissingContent />}</Table.Cell>;
+  if (status === ACTION_SCHEDULED) {
+    return (
+      <Table.Cell>
+        <Stack flexDirection="row" alignItems="center">
+          <DoneIcon variant="positive" />
+          <TextLink variant="positive">OK</TextLink>
+        </Stack>
+      </Table.Cell>
+    );
+  } else if (error) {
+    return renderError();
+  } else {
+    return (
+      <Table.Cell>
+        <MissingContent />
+      </Table.Cell>
+    );
+  }
 };
 
 export default ScheduleResult;
