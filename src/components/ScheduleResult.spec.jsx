@@ -50,7 +50,9 @@ const componentInTable = (status) => {
     <Table>
       <Table.Body>
         <Table.Row>
-          <ScheduleResult id="1234" status={status} />
+          <Table.Cell>
+            <ScheduleResult id="1234" status={status} />
+          </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>

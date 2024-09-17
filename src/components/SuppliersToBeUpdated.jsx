@@ -29,7 +29,12 @@ const SuppliersToBeUpdated = () => {
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="published" />
           </LoadingTableCell>
-          <ScheduleResult id={pair.supplier.id} status={pair.supplier.status} />
+          <Table.Cell>
+            <ScheduleResult
+              id={pair.supplier.id}
+              status={pair.supplier.status}
+            />
+          </Table.Cell>
           <Table.Cell>
             <TextLink
               onClick={() =>

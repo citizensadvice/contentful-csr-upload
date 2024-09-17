@@ -5,7 +5,6 @@ import {
   Modal,
   Stack,
   Subheading,
-  Table,
   TextLink,
 } from "@contentful/f36-components";
 import { useSelector } from "react-redux";
@@ -23,7 +22,7 @@ const ScheduleResult = ({ id, status }) => {
   const [showModal, setShowModal] = useState(false);
 
   const renderError = () => (
-    <Table.Cell>
+    <React.Fragment>
       <Stack flexDirection="row" alignItems="center">
         <ErrorCircleIcon variant="negative" />
         <TextLink variant="negative" onClick={() => setShowModal(true)}>
@@ -58,26 +57,20 @@ const ScheduleResult = ({ id, status }) => {
           </>
         )}
       </Modal>
-    </Table.Cell>
+    </React.Fragment>
   );
 
   if (status === ACTION_SCHEDULED) {
     return (
-      <Table.Cell>
-        <Stack flexDirection="row" alignItems="center">
-          <DoneIcon variant="positive" />
-          <TextLink variant="positive">OK</TextLink>
-        </Stack>
-      </Table.Cell>
+      <Stack flexDirection="row" alignItems="center">
+        <DoneIcon variant="positive" />
+        <TextLink variant="positive">OK</TextLink>
+      </Stack>
     );
   } else if (error) {
     return renderError();
   } else {
-    return (
-      <Table.Cell>
-        <MissingContent />
-      </Table.Cell>
-    );
+    return <MissingContent />;
   }
 };
 
