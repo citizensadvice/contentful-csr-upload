@@ -21,6 +21,12 @@ export const suppliersSlice = createSlice({
       supplier.status = status;
       supplier.newContentfulId = newContentfulId;
     },
+    setSupplierStatus: (state, action) => {
+      const { id, status } = action.payload;
+
+      const supplier = state.value.find((s) => s.id === id);
+      supplier.status = status;
+    },
     setWhitelabelSupplierId: (state, action) => {
       const { id, whitelabelSupplierContentfulId } = action.payload;
 
@@ -35,6 +41,7 @@ export const {
   addSupplier,
   resetSuppliers,
   setSupplier,
+  setSupplierStatus,
   setWhitelabelSupplierId,
 } = suppliersSlice.actions;
 

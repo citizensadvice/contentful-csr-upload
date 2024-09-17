@@ -76,7 +76,7 @@ export const getContentfulSuppliersNotInFile = createSelector(
   },
 );
 
-export const getContentfulIdsToBePublished = createSelector(
+export const getSuppliersToBePublished = createSelector(
   [
     (state) => state.suppliers.value,
     (state) => state.contentfulSuppliers.value,
@@ -90,11 +90,7 @@ export const getContentfulIdsToBePublished = createSelector(
           contentfulSupplier: contentfulSuppliers.find((cs) => cs.id === s.id),
         };
       })
-      .filter((pair) => pair.contentfulSupplier !== undefined)
-      .map(
-        (pair) =>
-          pair.supplier.newContentfulId || pair.contentfulSupplier.contentfulId,
-      );
+      .filter((pair) => pair.contentfulSupplier !== undefined);
   },
 );
 

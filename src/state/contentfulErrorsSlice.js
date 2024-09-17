@@ -9,16 +9,16 @@ export const contentfulErrorsSlice = createSlice({
   initialState,
   reducers: {
     addContentfulError: (state, action) => {
-      const { contentfulId, error, errorType } = action.payload;
+      const { id, error, errorType } = action.payload;
 
       const contentfulError = state.value.find(
-        (err) => err.contentfulId === contentfulId && err.type === errorType,
+        (err) => err.id === id && err.type === errorType,
       );
       if (contentfulError !== undefined) {
         contentfulError.error = error;
       } else {
         state.value.push({
-          contentfulId: contentfulId,
+          id: id,
           error: error,
           errorType: errorType,
         });
