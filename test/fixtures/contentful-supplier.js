@@ -124,7 +124,6 @@ export const expectedFields = {
         {
           nodeType: "unordered-list",
           content: [
-            { nodeType: "text", marks: [], value: "\n", data: {} },
             {
               nodeType: "list-item",
               content: [
@@ -132,7 +131,6 @@ export const expectedFields = {
               ],
               data: {},
             },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
             {
               nodeType: "list-item",
               content: [
@@ -145,7 +143,6 @@ export const expectedFields = {
               ],
               data: {},
             },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
             {
               nodeType: "list-item",
               content: [
@@ -158,7 +155,6 @@ export const expectedFields = {
               ],
               data: {},
             },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
           ],
           data: {},
         },
