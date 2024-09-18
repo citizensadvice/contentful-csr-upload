@@ -3,6 +3,7 @@ import {
   PARSED,
   TO_BE_PUBLISHED,
 } from "../../src/constants/supplier-status";
+import { SUPPLIER_PUT_ERROR } from "../../src/constants/error-types";
 
 const suppliers = [
   {
@@ -99,4 +100,41 @@ const contentfulSuppliers = [
   },
 ];
 
-export { contentfulSuppliers, suppliers };
+const error = {
+  status: 422,
+  statusText: "",
+  message: "Invalid request payload input",
+  details: {
+    errors: [
+      {
+        details: "en-FR is not allowed here",
+        value: "2024-08-31T23:01:00.000Z",
+      },
+    ],
+  },
+  request: {
+    url: "https://api.contentful.com:443/spaces/j9d3gn48j4iu/entry",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/vnd.contentful.management.v1+json",
+      "X-Contentful-User-Agent":
+        "app contentful.web-app; platform browser; sha 3114531e143db36b8f368acbf807c81037ecc659",
+    },
+    method: "POST",
+  },
+};
+
+const contentfulErrors = [
+  {
+    id: "2",
+    errorType: SUPPLIER_PUT_ERROR,
+    error: JSON.stringify(error),
+  },
+  {
+    id: "11",
+    errorType: SUPPLIER_PUT_ERROR,
+    error: JSON.stringify(error),
+  },
+];
+
+export { contentfulSuppliers, suppliers, contentfulErrors };
