@@ -5,7 +5,9 @@ import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import UpdateResult from "./UpdateResult";
-import ScheduleResult from "./ScheduleResult";
+import ContentfulPutResult from "./ContentfulPutResult";
+import { SUPPLIER_PUT_ERROR } from "../constants/error-types";
+import { ACTION_SCHEDULED } from "../constants/supplier-status";
 
 const SuppliersToBeCreated = () => {
   const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
@@ -30,9 +32,11 @@ const SuppliersToBeCreated = () => {
             <EntityStatusBadge entityStatus="published" />
           </LoadingTableCell>
           <Table.Cell>
-            <ScheduleResult
-              id={pair.supplier.id}
-              status={pair.supplier.status}
+            <ContentfulPutResult
+              supplierId={pair.supplier.id}
+              supplierStatus={pair.supplier.status}
+              okStatus={[ACTION_SCHEDULED]}
+              displayErrorType={SUPPLIER_PUT_ERROR}
             />
           </Table.Cell>
           <Table.Cell>
