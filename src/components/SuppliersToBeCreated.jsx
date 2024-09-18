@@ -4,10 +4,13 @@ import { getSuppliersNotInContentful } from "../selectors";
 import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
-import UpdateResult from "./UpdateResult";
 import ContentfulPutResult from "./ContentfulPutResult";
 import { SUPPLIER_PUT_ERROR } from "../constants/error-types";
-import { ACTION_SCHEDULED } from "../constants/supplier-status";
+import {
+  ACTION_SCHEDULED,
+  TO_BE_PUBLISHED,
+  TO_BE_UNPUBLISHED,
+} from "../constants/supplier-status";
 
 const SuppliersToBeCreated = () => {
   const suppliersToBeCreated = useSelector(getSuppliersNotInContentful);
@@ -23,7 +26,12 @@ const SuppliersToBeCreated = () => {
         <Table.Row key={pair.supplier.name}>
           <Table.Cell>{pair.supplier.name}</Table.Cell>
           <LoadingTableCell status={pair.supplier.status}>
-            <UpdateResult status={pair.supplier.status} />
+            <ContentfulPutResult
+              displayErrorType={SUPPLIER_PUT_ERROR}
+              supplierStatus={pair.supplier.status}
+              supplierId={pair.supplier.id}
+              okStatus={[TO_BE_PUBLISHED, TO_BE_UNPUBLISHED]}
+            />
           </LoadingTableCell>
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="draft" />

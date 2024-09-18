@@ -16,7 +16,7 @@ import { cleanup } from "@testing-library/react";
 
 vi.mock("../../ContentfulWrapper.js", () => {
   return {
-    createSupplier: vi.fn().mockResolvedValue({}),
+    createSupplier: vi.fn().mockResolvedValue({ sys: { id: "1234" } }),
     updateSupplier: vi.fn().mockResolvedValue({}),
   };
 });
@@ -58,6 +58,7 @@ describe("ScheduleScreen component", () => {
         suppliers: { value: suppliers },
         contentfulSuppliers: { value: contentfulSuppliers },
         appStatus: { value: PROCESSED_SUPPLIERS },
+        contentfulErrors: { value: [] },
       },
     });
 
