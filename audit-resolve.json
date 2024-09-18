@@ -24,6 +24,16 @@
       "decision": "ignore",
       "madeAt": 1724326296868,
       "expiresAt": 1724931087812
+    },
+    "1099626|vite": {
+      "decision": "ignore",
+      "madeAt": 1726651573918,
+      "expiresAt": 1727256353443
+    },
+    "1099637|vite": {
+      "decision": "ignore",
+      "madeAt": 1726651580693,
+      "expiresAt": 1727256353443
     }
   },
   "rules": {},
