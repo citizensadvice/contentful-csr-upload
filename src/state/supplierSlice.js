@@ -31,7 +31,13 @@ export const suppliersSlice = createSlice({
       const { id, whitelabelSupplierContentfulId } = action.payload;
 
       const supplier = state.value.find((s) => s.id === id);
-      supplier.whitelabelSupplierContentfulId = whitelabelSupplierContentfulId;
+      // if the supplier exists in the spreadsheet, we should update it with the whitelabel supplier id
+      // if it does not exist in the spreadsheet, we don't need to worry about setting the whitelabel id because
+      // the supplier will be unpublished anyway
+      if (supplier) {
+        supplier.whitelabelSupplierContentfulId =
+          whitelabelSupplierContentfulId;
+      }
     },
   },
 });

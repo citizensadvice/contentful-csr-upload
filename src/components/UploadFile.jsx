@@ -3,7 +3,7 @@ import Papa from "papaparse";
 import { FormControl, TextInput } from "@contentful/f36-components";
 import { useDispatch } from "react-redux";
 
-import createSupplierFromTsv from "../helpers/createSupplierFromTsv";
+import createSupplierFromCsv from "../helpers/createSupplierFromCsv";
 import { addSupplier, resetSuppliers } from "../state/supplierSlice";
 import { setErrors, resetErrors } from "../state/uploadErrorsSlice";
 import { setAppStatus } from "../state/appStatusSlice";
@@ -19,10 +19,10 @@ const UploadFile = () => {
     Papa.parse(event.target.files[0], {
       header: true,
       skipEmptyLines: true,
-      delimiter: "\t",
+      delimiter: ",",
       complete: (results) => {
         results.data.forEach((row) => {
-          const supplier = createSupplierFromTsv(row);
+          const supplier = createSupplierFromCsv(row);
           dispatch(addSupplier(supplier));
         });
 
@@ -34,7 +34,7 @@ const UploadFile = () => {
 
   return (
     <FormControl>
-      <FormControl.Label>Choose a .tsv file</FormControl.Label>
+      <FormControl.Label>Choose a .csv file</FormControl.Label>
       <TextInput type="file" onChange={(e) => changeHandler(e)} />
     </FormControl>
   );

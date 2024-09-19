@@ -124,41 +124,60 @@ export const expectedFields = {
         {
           nodeType: "unordered-list",
           content: [
-            { nodeType: "text", marks: [], value: "\n", data: {} },
-            {
-              nodeType: "list-item",
-              content: [
-                { nodeType: "text", marks: [], value: "guarantee 1", data: {} },
-              ],
-              data: {},
-            },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
             {
               nodeType: "list-item",
               content: [
                 {
-                  nodeType: "text",
-                  marks: [],
-                  value: "guarantee 2",
+                  nodeType: "paragraph",
                   data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 1",
+                      data: {},
+                    },
+                  ],
                 },
               ],
               data: {},
             },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
             {
               nodeType: "list-item",
               content: [
                 {
-                  nodeType: "text",
-                  marks: [],
-                  value: "guarantee 3",
+                  nodeType: "paragraph",
                   data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 2",
+                      data: {},
+                    },
+                  ],
                 },
               ],
               data: {},
             },
-            { nodeType: "text", marks: [], value: "\n", data: {} },
+            {
+              nodeType: "list-item",
+              content: [
+                {
+                  nodeType: "paragraph",
+                  data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 3",
+                      data: {},
+                    },
+                  ],
+                },
+              ],
+              data: {},
+            },
           ],
           data: {},
         },

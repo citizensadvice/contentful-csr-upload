@@ -1,6 +1,6 @@
 import { PARSED } from "../constants/supplier-status";
 
-const createSupplierFromTsv = (row) => {
+const createSupplierFromCsv = (row) => {
   return {
     id: parseInt(row["SupplierId"], 10),
     name: row["supplierName"],
@@ -29,4 +29,4 @@ const isSmall = (dataAvailable) => {
   return dataAvailable === "FALSE";
 };
 
-export default createSupplierFromTsv;
+export default createSupplierFromCsv;

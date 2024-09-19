@@ -13,7 +13,7 @@ const UploadScreen = () => {
     <Box marginTop="spacingL" marginBottom="spacingXl">
       <Heading as="h2">Upload the data file</Heading>
       <Paragraph>
-        Upload the tab separated values (TSV) file that you have created from
+        Upload the comma separated values (CSV) file that you have created from
         the energy data spreadsheet.
       </Paragraph>
       <UploadFile></UploadFile>

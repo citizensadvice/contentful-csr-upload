@@ -52,7 +52,7 @@ const mapSupplierToContentfulFields = (
     "en-GB": markdownToJson(supplier.fuelMix),
   };
   contentfulSupplier.fields.guaranteeList = {
-    "en-GB": markdownToJson(supplier.guaranteeList),
+    "en-GB": markdownToJson(supplier.guaranteesList, { stripWhitespace: true }),
   };
   contentfulSupplier.fields.openingHours = {
     "en-GB": markdownToJson(supplier.openingHours),

@@ -4,18 +4,18 @@ import { userEvent } from "@testing-library/user-event";
 import { renderWithProvider } from "../../../test/utils/render-with-provider";
 import UploadScreen from "./UploadScreen";
 
-import wellFormedFile from "../../../test/fixtures/well-formed-tsv-file";
-import badlyFormedFile from "../../../test/fixtures/badly-formed-tsv-file";
+import wellFormedFile from "../../../test/fixtures/well-formed-csv-file";
+import badlyFormedFile from "../../../test/fixtures/badly-formed-csv-file";
 
 describe("UploadScreen component", () => {
   const { getByLabelText, getByText } = renderWithProvider(<UploadScreen />);
 
   it("displays a file upload", () => {
-    expect(getByLabelText("Choose a .tsv file")).toBeTruthy();
+    expect(getByLabelText("Choose a .csv file")).toBeTruthy();
   });
 
-  it("parses a well formed tsv file with supplier data", async () => {
-    const fileInput = getByLabelText("Choose a .tsv file");
+  it("parses a well formed csv file with supplier data", async () => {
+    const fileInput = getByLabelText("Choose a .csv file");
     const user = userEvent.setup();
 
     await user.upload(fileInput, wellFormedFile);
@@ -23,8 +23,8 @@ describe("UploadScreen component", () => {
     expect(getByText("Found 4 suppliers")).toBeTruthy();
   });
 
-  it("reports errors in a badly formed tsv file", async () => {
-    const fileInput = getByLabelText("Choose a .tsv file");
+  it("reports errors in a badly formed csv file", async () => {
+    const fileInput = getByLabelText("Choose a .csv file");
     const user = userEvent.setup();
 
     await user.upload(fileInput, badlyFormedFile);

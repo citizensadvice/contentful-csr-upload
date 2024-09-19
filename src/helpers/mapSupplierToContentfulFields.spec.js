@@ -18,7 +18,7 @@ const testSupplier = {
   contactEmail: Number(99.3),
   contactSocialMedia: "99,000",
   guaranteeRating: Number("4.32"),
-  guaranteeList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
+  guaranteesList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
   contactInfo:
     "[01234 5678910](tel:012345678910)\n[www.example.com](https://www.example.com)",
   billingInfo: "[billing@example.com](mailto:billing@example.com)",
