@@ -23,6 +23,8 @@ import SuppliersToBeCreated from "../SuppliersToBeCreated";
 import SuppliersToBeUnpublished from "../SuppliersToBeUnpublished";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { createClient } from "contentful-management";
+import { addContentfulError } from "../../state/contentfulErrorsSlice";
+import { SUPPLIER_PUT_ERROR } from "../../constants/error-types";
 
 const ScheduleScreen = () => {
   const sdk = useSDK();
@@ -57,7 +59,13 @@ const ScheduleScreen = () => {
                   status: CONTENTFUL_PUT_ERROR,
                 }),
               );
-              console.error(error.message);
+              dispatch(
+                addContentfulError({
+                  id: pair.supplier.id,
+                  errorType: SUPPLIER_PUT_ERROR,
+                  error: error.message,
+                }),
+              );
             }),
         );
       });
@@ -81,7 +89,13 @@ const ScheduleScreen = () => {
                   status: CONTENTFUL_PUT_ERROR,
                 }),
               );
-              console.error(error.message);
+              dispatch(
+                addContentfulError({
+                  id: pair.supplier.id,
+                  errorType: SUPPLIER_PUT_ERROR,
+                  error: error.message,
+                }),
+              );
             }),
         );
       });

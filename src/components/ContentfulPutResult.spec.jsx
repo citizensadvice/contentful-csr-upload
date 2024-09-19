@@ -1,7 +1,7 @@
 import { describe, expect, it, afterEach } from "vitest";
 
 import { cleanup } from "@testing-library/react";
-import ScheduleResult from "./ScheduleResult";
+import ContentfulPutResult from "./ContentfulPutResult";
 import { SCHEDULED_ACTION_PUT_ERROR } from "../constants/error-types";
 import { Table } from "@contentful/f36-components";
 import {
@@ -45,13 +45,18 @@ const contentfulErrors = [
   },
 ];
 
-const componentInTable = (status) => {
+const componentInTable = (supplierStatus) => {
   return (
     <Table>
       <Table.Body>
         <Table.Row>
           <Table.Cell>
-            <ScheduleResult id="1234" status={status} />
+            <ContentfulPutResult
+              supplierId="1234"
+              supplierStatus={supplierStatus}
+              okStatus={[ACTION_SCHEDULED]}
+              displayErrorType={SCHEDULED_ACTION_PUT_ERROR}
+            />
           </Table.Cell>
         </Table.Row>
       </Table.Body>
@@ -61,7 +66,7 @@ const componentInTable = (status) => {
 
 describe("ScheduleResultComponent", () => {
   afterEach(() => cleanup());
-  it("shows OK when the scheduling was successful", () => {
+  it("shows OK when the Contentful PUT request was successful", () => {
     const { getByText } = renderWithProvider(
       componentInTable(ACTION_SCHEDULED),
       {
@@ -74,7 +79,7 @@ describe("ScheduleResultComponent", () => {
     expect(getByText("OK")).toBeTruthy();
   });
 
-  it("shows an error message when scheduling failed", async () => {
+  it("shows an error message when the Contentful PUT request failed", async () => {
     const { getByText } = renderWithProvider(
       componentInTable(TO_BE_PUBLISHED),
       {
@@ -93,5 +98,18 @@ describe("ScheduleResultComponent", () => {
     expect(
       getByText('"scheduledFor.datetime" must be in the future'),
     ).toBeTruthy();
+  });
+
+  it("does not show success or failure if the request has not been made yet", () => {
+    const { getByText } = renderWithProvider(
+      componentInTable(TO_BE_PUBLISHED),
+      {
+        preloadedState: {
+          contentfulErrors: { value: [] },
+        },
+      },
+    );
+
+    expect(getByText("—")).toBeTruthy();
   });
 });

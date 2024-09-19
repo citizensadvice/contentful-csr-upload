@@ -7,6 +7,7 @@ import { renderWithProvider } from "../../test/utils/render-with-provider";
 import {
   suppliers,
   contentfulSuppliers,
+  contentfulErrors,
 } from "../../test/fixtures/schedule-screen-state";
 import SuppliersToBeCreated from "./SuppliersToBeCreated";
 import { Table } from "@contentful/f36-components";
@@ -40,6 +41,7 @@ describe("SuppliersToBeCreated component", () => {
       preloadedState: {
         suppliers: { value: suppliers },
         contentfulSuppliers: { value: contentfulSuppliers },
+        contentfulErrors: { value: contentfulErrors },
       },
     },
   );
@@ -99,7 +101,7 @@ describe("SuppliersToBeCreated component", () => {
   });
 
   it("displays a failure message when the create fails", () => {
-    expect(failedUpdateCells[1].textContent).toContain("Errors during update");
+    expect(failedUpdateCells[1].textContent).toContain("Error");
   });
 
   it("displays a loading animation when the update has not happened yet", () => {

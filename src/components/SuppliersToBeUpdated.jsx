@@ -4,8 +4,16 @@ import { getMatchedSuppliersInContentful } from "../selectors";
 import React from "react";
 import LoadingTableCell from "./LoadingTableCell";
 import { useSDK } from "@contentful/react-apps-toolkit";
-import UpdateResult from "./UpdateResult";
-import ScheduleResult from "./ScheduleResult";
+import ContentfulPutResult from "./ContentfulPutResult";
+import {
+  SCHEDULED_ACTION_PUT_ERROR,
+  SUPPLIER_PUT_ERROR,
+} from "../constants/error-types";
+import {
+  ACTION_SCHEDULED,
+  TO_BE_PUBLISHED,
+  TO_BE_UNPUBLISHED,
+} from "../constants/supplier-status";
 
 const SuppliersToBeUpdated = () => {
   const suppliersToBeUpdated = useSelector(getMatchedSuppliersInContentful);
@@ -21,7 +29,12 @@ const SuppliersToBeUpdated = () => {
         <Table.Row key={pair.supplier.id}>
           <Table.Cell>{pair.supplier.name}</Table.Cell>
           <LoadingTableCell status={pair.supplier.status}>
-            <UpdateResult status={pair.supplier.status} />
+            <ContentfulPutResult
+              displayErrorType={SUPPLIER_PUT_ERROR}
+              supplierStatus={pair.supplier.status}
+              supplierId={pair.supplier.id}
+              okStatus={[TO_BE_PUBLISHED, TO_BE_UNPUBLISHED]}
+            />
           </LoadingTableCell>
           <LoadingTableCell status={pair.supplier.status}>
             <EntityStatusBadge entityStatus="changed" />
@@ -30,9 +43,11 @@ const SuppliersToBeUpdated = () => {
             <EntityStatusBadge entityStatus="published" />
           </LoadingTableCell>
           <Table.Cell>
-            <ScheduleResult
-              id={pair.supplier.id}
-              status={pair.supplier.status}
+            <ContentfulPutResult
+              displayErrorType={SCHEDULED_ACTION_PUT_ERROR}
+              okStatus={[ACTION_SCHEDULED]}
+              supplierStatus={pair.supplier.status}
+              supplierId={pair.supplier.id}
             />
           </Table.Cell>
           <Table.Cell>

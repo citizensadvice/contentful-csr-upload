@@ -9,15 +9,18 @@ import {
 } from "@contentful/f36-components";
 import { useSelector } from "react-redux";
 import { getError } from "../selectors";
-import { SCHEDULED_ACTION_PUT_ERROR } from "../constants/error-types";
 import { MissingContent } from "@contentful/f36-components";
 import React, { useState } from "react";
 import { DoneIcon, ErrorCircleIcon } from "@contentful/f36-icons";
-import { ACTION_SCHEDULED } from "../constants/supplier-status";
 
-const ScheduleResult = ({ id, status }) => {
+const ContentfulPutResult = ({
+  supplierId,
+  supplierStatus,
+  okStatus,
+  displayErrorType,
+}) => {
   const error = useSelector((state) =>
-    getError(state, id, SCHEDULED_ACTION_PUT_ERROR),
+    getError(state, supplierId, displayErrorType),
   );
   const [showModal, setShowModal] = useState(false);
 
@@ -60,7 +63,7 @@ const ScheduleResult = ({ id, status }) => {
     </React.Fragment>
   );
 
-  if (status === ACTION_SCHEDULED) {
+  if (okStatus.includes(supplierStatus)) {
     return (
       <Stack flexDirection="row" alignItems="center">
         <DoneIcon variant="positive" />
@@ -74,4 +77,4 @@ const ScheduleResult = ({ id, status }) => {
   }
 };
 
-export default ScheduleResult;
+export default ContentfulPutResult;
