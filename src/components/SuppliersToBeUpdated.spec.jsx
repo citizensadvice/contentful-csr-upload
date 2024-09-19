@@ -82,8 +82,12 @@ describe("SuppliersToBeUpdated component", () => {
     expect(successfulUpdateCells[3].textContent).toContain("published");
   });
 
+  it("doesn't display a result for the scheduling action yet", () => {
+    expect(successfulUpdateCells[4].textContent).toEqual("—");
+  });
+
   it("displays the view entry link when the update is successful", async () => {
-    const viewEntryLink = within(successfulUpdateCells[4]).getByText(
+    const viewEntryLink = within(successfulUpdateCells[5]).getByText(
       "View entry",
     );
     expect(viewEntryLink).toBeTruthy();

@@ -12,7 +12,7 @@ import {
 import { ErrorCircleIcon } from "@contentful/f36-icons";
 import { setAppStatus } from "../state/appStatusSlice";
 import { setScheduleTime } from "../state/scheduleTimeSlice";
-import { PROCESSED_SUPPLIERS, SCHEDULE_UPDATES } from "../constants/app-status";
+import { SCHEDULE_UPDATES, SCHEDULING_UPDATES } from "../constants/app-status";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllContentfulActionsSuccessful } from "../selectors";
 
@@ -28,7 +28,7 @@ const SchedulingForm = () => {
   const date = useSelector((state) => state.scheduleTime.value);
 
   const allowScheduling =
-    appStatus === PROCESSED_SUPPLIERS &&
+    appStatus !== SCHEDULING_UPDATES &&
     uploadsSuccessful &&
     error === undefined;
 
