@@ -25,7 +25,6 @@ const updateSupplier = async (pair, cma) => {
   );
 
   mapSupplierToContentfulFields(pair.supplier, contentfulSupplier);
-
   return contentfulSupplier.update();
 };
 

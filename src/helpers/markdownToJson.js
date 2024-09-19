@@ -13,8 +13,12 @@ const markdownToJson = (markdown, options) => {
 
     if (stripWhitespace) {
       // remove whitespace between HTML elements (eg between `<li>` elements
-      html = html.replace(/\>[\s]+\</g, "><");
+      html = html.replace(/>[\s]+</g, "><");
     }
+
+    // format `li`s for Contentful - it requires text content in an `li` to be wrapped in `p`
+    html = html.replace(/<li>/g, "<li><p>").replace(/<\/li>/g, "</p></li>");
+
     const json = htmlStringToDocument(html);
 
     json.content = json.content.filter(noEmptyTextTypeNodes);

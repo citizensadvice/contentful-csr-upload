@@ -127,18 +127,17 @@ export const expectedFields = {
             {
               nodeType: "list-item",
               content: [
-                { nodeType: "text", marks: [], value: "guarantee 1", data: {} },
-              ],
-              data: {},
-            },
-            {
-              nodeType: "list-item",
-              content: [
                 {
-                  nodeType: "text",
-                  marks: [],
-                  value: "guarantee 2",
+                  nodeType: "paragraph",
                   data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 1",
+                      data: {},
+                    },
+                  ],
                 },
               ],
               data: {},
@@ -147,10 +146,34 @@ export const expectedFields = {
               nodeType: "list-item",
               content: [
                 {
-                  nodeType: "text",
-                  marks: [],
-                  value: "guarantee 3",
+                  nodeType: "paragraph",
                   data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 2",
+                      data: {},
+                    },
+                  ],
+                },
+              ],
+              data: {},
+            },
+            {
+              nodeType: "list-item",
+              content: [
+                {
+                  nodeType: "paragraph",
+                  data: {},
+                  content: [
+                    {
+                      nodeType: "text",
+                      marks: [],
+                      value: "guarantee 3",
+                      data: {},
+                    },
+                  ],
                 },
               ],
               data: {},
