@@ -5,7 +5,7 @@ const UploadErrors = ({ errors }) => {
   return (
     <React.Fragment>
       <Paragraph>
-        Found {errors.length} problems in the <code>.tsv</code> file:
+        Found {errors.length} problems in the <code>.csv</code> file:
       </Paragraph>
       <List>
         {errors.map((error) => (
