@@ -24,44 +24,52 @@ const ContentfulPutResult = ({
   );
   const [showModal, setShowModal] = useState(false);
 
-  const renderError = () => (
-    <React.Fragment>
-      <Stack flexDirection="row" alignItems="center">
-        <ErrorCircleIcon variant="negative" />
-        <TextLink variant="negative" onClick={() => setShowModal(true)}>
-          Error
-        </TextLink>
-      </Stack>
-      <Modal
-        onClose={() => setShowModal(false)}
-        isShown={showModal}
-        size="fullScreen"
-      >
-        {() => (
-          <>
-            <Modal.Header
-              title="Error from Contentful"
-              onClose={() => setShowModal(false)}
-            />
-            <Modal.Content>
-              <Box marginBottom="spacingXl">
-                <Subheading>Error messages</Subheading>
-                <List>
-                  {JSON.parse(error.error).details.errors.map((e) => (
-                    <ListItem key={e.details}>{e.details}</ListItem>
-                  ))}
-                </List>
-              </Box>
-              <Subheading>Response</Subheading>
-              <code>
-                <pre style={{ whiteSpace: "pre-wrap" }}>{error.error}</pre>
-              </code>
-            </Modal.Content>
-          </>
-        )}
-      </Modal>
-    </React.Fragment>
-  );
+  const renderError = () => {
+    const errorMessages = JSON.parse(error.error).details.errors;
+
+    return (
+      <React.Fragment>
+        <Stack flexDirection="row" alignItems="center">
+          <ErrorCircleIcon variant="negative" />
+          <TextLink variant="negative" onClick={() => setShowModal(true)}>
+            Error
+          </TextLink>
+        </Stack>
+        <Modal
+          onClose={() => setShowModal(false)}
+          isShown={showModal}
+          size="fullScreen"
+        >
+          {() => (
+            <>
+              <Modal.Header
+                title="Error from Contentful"
+                onClose={() => setShowModal(false)}
+              />
+              <Modal.Content>
+                {errorMessages ? (
+                  <Box marginBottom="spacingXl">
+                    <Subheading>Error messages</Subheading>
+                    <List>
+                      {errorMessages.map((e) => (
+                        <ListItem key={errorMessages.indexOf(e)}>
+                          {e.details}
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                ) : null}
+                <Subheading>Response</Subheading>
+                <code>
+                  <pre style={{ whiteSpace: "pre-wrap" }}>{error.error}</pre>
+                </code>
+              </Modal.Content>
+            </>
+          )}
+        </Modal>
+      </React.Fragment>
+    );
+  };
 
   if (okStatus.includes(supplierStatus)) {
     return (

@@ -64,8 +64,9 @@ const componentInTable = (supplierStatus) => {
   );
 };
 
-describe("ScheduleResultComponent", () => {
+describe("ContentfulPutResultComponent", () => {
   afterEach(() => cleanup());
+
   it("shows OK when the Contentful PUT request was successful", () => {
     const { getByText } = renderWithProvider(
       componentInTable(ACTION_SCHEDULED),
@@ -111,5 +112,37 @@ describe("ScheduleResultComponent", () => {
     );
 
     expect(getByText("—")).toBeTruthy();
+  });
+
+  it("shows just the error response from Contentful when the response is not parsable", async () => {
+    const differentError = {
+      ...error,
+      details: { message: "This error has no errors property." },
+    };
+    const { getByText, queryByText } = renderWithProvider(
+      componentInTable(TO_BE_PUBLISHED),
+      {
+        preloadedState: {
+          contentfulErrors: {
+            value: [
+              {
+                id: "1234",
+                errorType: SCHEDULED_ACTION_PUT_ERROR,
+                error: JSON.stringify(differentError),
+              },
+            ],
+          },
+        },
+      },
+    );
+
+    const modalLink = getByText("Error");
+    expect(modalLink).toBeTruthy();
+
+    const user = await userEvent.setup();
+    await user.click(modalLink);
+
+    expect(queryByText("Error messages")).toBeFalsy();
+    expect(getByText(JSON.stringify(differentError))).toBeTruthy();
   });
 });
