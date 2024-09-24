@@ -7,6 +7,8 @@ export const expectedFields = {
   overallRating: { "en-GB": 3.5 },
   contactEmail: { "en-GB": 99.3 },
   contactRating: { "en-GB": 3 },
+  contactSocialMedia: { "en-GB": "99,000" },
+  contactTime: { "en-GB": "00:11:30" },
   guaranteeRating: { "en-GB": 4.32 },
   supplierId: { "en-GB": 1 },
   slug: { "en-GB": "test-supplier" },
