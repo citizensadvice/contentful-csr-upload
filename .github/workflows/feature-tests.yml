@@ -30,10 +30,10 @@ jobs:
       - name: Run feature tests
         run: npm run e2e-tests
         env:
-          - CONTENTFUL_USERNAME: ${{ vars.CONTENTFUL_USERNAME }}
-          - CONTENTFUL_PASSWORD: ${{ secrets.CONTENTFUL_PASSWORD }}
-          - VITE_REACT_APP_CONTENTFUL_ENV: ${{ secrets.VITE_REACT_APP_CONTENTFUL_ENV }}
-          - VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_REACT_APP_CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_USERNAME: ${{ vars.CONTENTFUL_USERNAME }}
+          CONTENTFUL_PASSWORD: ${{ secrets.CONTENTFUL_PASSWORD }}
+          VITE_REACT_APP_CONTENTFUL_ENV: ${{ secrets.VITE_REACT_APP_CONTENTFUL_ENV }}
+          VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_REACT_APP_CONTENTFUL_SPACE_ID }}
 
       - uses: actions/upload-artifact@v4
         if: failure()
