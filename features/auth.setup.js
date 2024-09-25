@@ -18,8 +18,8 @@ setup("authenticate", async ({ page }) => {
     `https://app.contentful.com/spaces/j9d3gn48j4iu/environments/master/apps/app_installations/${process.env.CONTENTFUL_APP_DEF_ID}/`,
   );
 
-  const cookieButton = await page.getByRole("button", { name: "Accept All" });
-  if (cookieButton.isVisible()) {
+  const cookieButton = page.getByRole("button", { name: "Accept All" });
+  if (await cookieButton.isVisible()) {
     await cookieButton.click();
   }
 
