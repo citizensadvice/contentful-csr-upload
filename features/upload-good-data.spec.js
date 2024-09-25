@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { StartPage } from "./pages/start-page";
+import { dismissSurvey } from "./utils/dismissSurvey";
 
 test("upload well formed data and schedule changes", async ({ page }) => {
   const startPage = new StartPage(page);
@@ -22,9 +23,8 @@ test("upload well formed data and schedule changes", async ({ page }) => {
   await expect(app.getByText("3 suppliers will be updated")).toBeVisible();
 
   // proceed to schedule screen
-  await app
-    .getByRole("button", { name: "Process suppliers" })
-    .click({ force: true });
+  await dismissSurvey(page);
+  await app.getByRole("button", { name: "Process suppliers" }).click();
   await expect(app.getByText("3 suppliers will be published")).toBeVisible({
     timeout: 60000,
   });
@@ -34,10 +34,10 @@ test("upload well formed data and schedule changes", async ({ page }) => {
   const oneMinuteFromNow = new Date().getMinutes() + 1;
   await app
     .getByRole("textbox", { name: "Enter time" })
-    .fill(`${hour}:${oneMinuteFromNow}`, { force: true });
-  await app
-    .getByRole("button", { name: "Schedule Update" })
-    .click({ force: true });
+    .fill(`${hour}:${oneMinuteFromNow}`);
+
+  await dismissSurvey(page);
+  await app.getByRole("button", { name: "Schedule Update" }).click();
 
   await expect(app.getByText("0 suppliers will be published")).toBeVisible({
     timeout: 60000,
