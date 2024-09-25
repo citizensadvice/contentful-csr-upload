@@ -14,7 +14,7 @@ setup("authenticate", async ({ page }) => {
   );
   await expect(page.getByRole("button", { name: "Apps" })).toBeVisible();
   await page.goto(
-    `https://app.contentful.com/spaces/${process.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID}/environments/master/apps/app_installations/${process.env.CONTENTFUL_APP_DEF_ID}/`,
+    `https://app.contentful.com/spaces/j9d3gn48j4iu/environments/master/apps/app_installations/${process.env.CONTENTFUL_APP_DEF_ID}/`,
   );
   await page.getByRole("button", { name: "Accept All" }).click();
 
