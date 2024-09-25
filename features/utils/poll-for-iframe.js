@@ -1,5 +1,5 @@
 /**
- * Recursively searches through the frame tree of either a page or a frame object
+ * Searches through the frame tree of either a page or a frame object
  * until it finds an iframe with a matching partial url
  *
  * @param {Page | Frame} container
