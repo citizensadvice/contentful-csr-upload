@@ -26,6 +26,7 @@
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "prettier -w . && npm run lint:js -- --fix",
     "test": "npx vitest run",
+    "e2e-install-browsers": "playwright install",
     "e2e-tests": "playwright test",
     "create-app-definition": "contentful-app-scripts create-app-definition",
     "upload": "contentful-app-scripts upload --bundle-dir ./dist",
