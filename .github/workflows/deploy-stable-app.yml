@@ -2,7 +2,7 @@ name: Deploy stable app
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Deploy unstable app"]
+    workflows: ["Feature tests"]
     types:
       - completed
 jobs:

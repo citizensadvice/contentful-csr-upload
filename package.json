@@ -26,6 +26,7 @@
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "prettier -w . && npm run lint:js -- --fix",
     "test": "npx vitest run",
+    "e2e-tests": "playwright test",
     "create-app-definition": "contentful-app-scripts create-app-definition",
     "upload": "contentful-app-scripts upload --bundle-dir ./dist",
     "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./dist --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN",
