@@ -1,0 +1,35 @@
+name: Feature tests
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Deploy unstable app"]
+    types:
+      - completed
+jobs:
+  deploy:
+    environment:
+      name: unstable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install npm packages
+        run: npm ci
+
+      - name: Run feature tests
+        run: npm run e2etests
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright failiure report
+          path: playwright-report
+          retention-days: 1
