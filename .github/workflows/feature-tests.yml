@@ -34,6 +34,7 @@ jobs:
           CONTENTFUL_PASSWORD: ${{ secrets.CONTENTFUL_PASSWORD }}
           VITE_REACT_APP_CONTENTFUL_ENV: ${{ secrets.VITE_REACT_APP_CONTENTFUL_ENV }}
           VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_REACT_APP_CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_APP_DEF_ID: ${{ secrets.UNSTABLE_APP_DEFINITION_ID }}
 
       - uses: actions/upload-artifact@v4
         if: failure()
