@@ -13,10 +13,15 @@ setup("authenticate", async ({ page }) => {
     "https://app.contentful.com/spaces/j9d3gn48j4iu/views/entries",
   );
   await expect(page.getByRole("button", { name: "Apps" })).toBeVisible();
+
   await page.goto(
     `https://app.contentful.com/spaces/j9d3gn48j4iu/environments/master/apps/app_installations/${process.env.CONTENTFUL_APP_DEF_ID}/`,
   );
-  await page.getByRole("button", { name: "Accept All" }).click();
+
+  const cookieButton = await page.getByRole("button", { name: "Accept All" });
+  if (cookieButton.isVisible()) {
+    await cookieButton.click();
+  }
 
   await page.context().storageState({ path: authFile });
 });
