@@ -89,8 +89,7 @@ export const getSuppliersToBePublished = createSelector(
           supplier: s,
           contentfulSupplier: contentfulSuppliers.find((cs) => cs.id === s.id),
         };
-      })
-      .filter((pair) => pair.contentfulSupplier !== undefined);
+      });
   },
 );
 

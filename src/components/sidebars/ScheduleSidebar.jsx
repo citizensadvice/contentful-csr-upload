@@ -47,13 +47,11 @@ const ScheduleSidebar = () => {
       const contentfulActions = [];
 
       suppliersToPublish.forEach((pair) => {
+        const contentfulId = pair.contentfulSupplier
+          ? pair.contentfulSupplier.contentfulId
+          : pair.supplier.newContentfulId;
         contentfulActions.push(
-          scheduleAction(
-            pair.contentfulSupplier.contentfulId,
-            date,
-            "publish",
-            cma,
-          )
+          scheduleAction(contentfulId, date, "publish", cma)
             .then(() => {
               dispatch(
                 setSupplierStatus({
