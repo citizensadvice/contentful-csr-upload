@@ -23,13 +23,13 @@ const suppliers = [
     status: TO_BE_PUBLISHED,
   },
   {
-    name: "Supplier in Contentful 3",
+    name: "Supplier not in Contentful",
     rank: "2",
     overallRating: "3.9",
     complaintsRatings: "2.9",
     contactRating: "1.9",
     guaranteeRating: "0.9",
-    id: 3,
+    id: 4,
     isSmall: true,
     status: TO_BE_PUBLISHED,
   },
@@ -47,12 +47,6 @@ const contentfulSuppliers = [
     id: 2,
     contentfulId: "5678",
     dataAvailable: false,
-  },
-  {
-    name: "Contentful supplier 3",
-    id: 3,
-    contentfulId: "9101",
-    dataAvailable: true,
   },
   {
     name: "Supplier in Contentful but not in the spreadsheet",

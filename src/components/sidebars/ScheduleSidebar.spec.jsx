@@ -69,7 +69,8 @@ describe("ScheduleSidebar Component", () => {
     const user = await userEvent.setup();
     await user.click(scheduleButton);
 
-    // once for each supplier to be published (3)
+    // once for each supplier to be updated and published (2)
+    // once for each supplier to be created and published (1)
     // once for each supplier to be unpublished (1)
     expect(scheduleAction).toHaveBeenCalledTimes(4);
   });
