@@ -4,16 +4,16 @@
   "private": true,
   "dependencies": {
     "@contentful/app-sdk": "^4.29.1",
-    "@contentful/f36-components": "4.74.0",
+    "@contentful/f36-components": "4.74.1",
     "@contentful/f36-icons": "^4.29.0",
     "@contentful/f36-tokens": "4.1.0",
     "@contentful/f36-workbench": "^4.21.1",
     "@contentful/field-editor-slug": "^1.5.8",
     "@contentful/react-apps-toolkit": "1.2.16",
-    "@reduxjs/toolkit": "^2.2.8",
+    "@reduxjs/toolkit": "^2.3.0",
     "contentful-management": "11.35.1",
-    "contentful-rich-text-html-parser": "^1.5.12",
-    "marked": "^14.1.2",
+    "contentful-rich-text-html-parser": "^1.5.13",
+    "marked": "^14.1.3",
     "papaparse": "^5.4.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -54,11 +54,11 @@
   },
   "devDependencies": {
     "@contentful/app-scripts": "1.29.0",
-    "@playwright/test": "^1.48.0",
+    "@playwright/test": "^1.48.1",
     "@testing-library/react": "16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/node": "^22.7.5",
-    "@vitejs/plugin-react": "4.3.2",
+    "@types/node": "^22.7.7",
+    "@vitejs/plugin-react": "4.3.3",
     "cross-env": "7.0.3",
     "dateformat": "^5.0.3",
     "eslint": "^8.57.0",
@@ -70,8 +70,8 @@
     "npm-audit-resolver": "^3.0.0-RC.0",
     "playwright": "^1.47.2",
     "prettier": "^3.3.3",
-    "vite": "5.4.8",
-    "vitest": "^2.1.2"
+    "vite": "5.4.9",
+    "vitest": "^2.1.3"
   },
   "overrides": {
     "@contentful/app-scripts": {
