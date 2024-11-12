@@ -26,8 +26,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_REACT_APP_CONTENTFUL_ENV: ${{ secrets.VITE_REACT_APP_CONTENTFUL_ENV }}
-          VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_REACT_APP_CONTENTFUL_SPACE_ID }}
+          VITE_REACT_APP_CONTENTFUL_ENV: ${{ vars.CONTENTFUL_ENV }}
+          VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ vars.CONTENTFUL_SPACE_ID }}
 
       - name: Deploy
         run: npm run upload-ci -- --comment "Deployed by GitHub ${GITHUB_SHA}"
