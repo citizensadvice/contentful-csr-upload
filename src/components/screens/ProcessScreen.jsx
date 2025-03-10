@@ -23,26 +23,33 @@ const ProcessScreen = () => {
     if (status === AppStatus.FETCHING_CONTENTFUL_SUPPLIERS) {
       getPublishedSuppliers(cma).then((suppliers) => {
         suppliers.forEach((s) => {
-          dispatch(
-            addContentfulSupplier({
-              contentfulId: s.sys.id,
-              id: parseInt(s.fields.supplierId["en-GB"], 10),
-              name: s.fields.name["en-GB"],
-              dataAvailable: s.fields.dataAvailable["en-GB"],
-              status: getStatus(s),
-            }),
-          );
-
-          if (
-            s.fields.whitelabelSupplier &&
-            s.fields.whitelabelSupplier["en-GB"]
-          ) {
+          try {
             dispatch(
-              setWhitelabelSupplierId({
+              addContentfulSupplier({
+                contentfulId: s.sys.id,
                 id: parseInt(s.fields.supplierId["en-GB"], 10),
-                whitelabelSupplierContentfulId:
-                  s.fields.whitelabelSupplier["en-GB"].sys.id,
+                name: s.fields.name["en-GB"],
+                dataAvailable: s.fields.dataAvailable["en-GB"],
+                status: getStatus(s),
               }),
+            );
+
+            if (
+              s.fields.whitelabelSupplier &&
+              s.fields.whitelabelSupplier["en-GB"]
+            ) {
+              dispatch(
+                setWhitelabelSupplierId({
+                  id: parseInt(s.fields.supplierId["en-GB"], 10),
+                  whitelabelSupplierContentfulId:
+                    s.fields.whitelabelSupplier["en-GB"].sys.id,
+                }),
+              );
+            }
+          } catch (error) {
+            console.error(
+              "Cannot create contentfulSupplier from Contentful data",
+              { supplier: s, error: error },
             );
           }
         });
