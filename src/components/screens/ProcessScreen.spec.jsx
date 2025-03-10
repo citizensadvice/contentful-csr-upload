@@ -15,7 +15,7 @@ vi.mock("@contentful/react-apps-toolkit", () => {
 // we don't want to actually call Contentful in the tests
 vi.mock("../../ContentfulWrapper.js", () => {
   return {
-    getPublishedSuppliers: vi.fn().mockResolvedValue({ items: [] }),
+    getPublishedSuppliers: vi.fn().mockResolvedValue([]),
   };
 });
 

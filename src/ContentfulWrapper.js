@@ -7,9 +7,14 @@ const getPublishedSuppliers = async (cma) => {
   const env = await space.getEnvironment(
     import.meta.env.VITE_REACT_APP_CONTENTFUL_ENV,
   );
-  return await env.getEntries({
+
+  let suppliers = await env.getEntries({
     content_type: "energySupplier",
+    "metadata.tags.sys.id[nin]": "test",
   });
+
+  // filter out archived suppliers
+  return suppliers.items.filter((s) => s.isArchived() === false);
 };
 
 const updateSupplier = async (pair, cma) => {
