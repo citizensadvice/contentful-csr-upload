@@ -48,7 +48,8 @@ describe("SuppliersFoundInContentful component", () => {
     expect(columns[1].textContent).toContain(
       "I am a ranked supplier in Contentful",
     );
-    expect(columns[2].textContent).toContain("ranked");
+    expect(columns[2].textContent).toContain("published");
+    expect(columns[3].textContent).toContain("ranked");
   });
 
   it("displays the correct data for a small supplier", () => {
@@ -57,7 +58,8 @@ describe("SuppliersFoundInContentful component", () => {
     expect(columns[1].textContent).toContain(
       "I am another supplier in Contentful",
     );
-    expect(columns[2].textContent).toContain("small");
+    expect(columns[2].textContent).toContain("draft");
+    expect(columns[3].textContent).toContain("small");
   });
 
   it("displays a link to the supplier in Contentful", async () => {

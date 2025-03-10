@@ -4,6 +4,7 @@ import { getMatchedSuppliersInContentful } from "../selectors";
 import {
   Badge,
   Box,
+  EntityStatusBadge,
   Heading,
   Paragraph,
   Table,
@@ -37,6 +38,7 @@ const SuppliersInFileAndContentful = () => {
             <Table.Row>
               <Table.Cell>Supplier from spreadsheet</Table.Cell>
               <Table.Cell>Supplier in Contentful</Table.Cell>
+              <Table.Cell>Status</Table.Cell>
               <Table.Cell>Type</Table.Cell>
             </Table.Row>
           </Table.Head>
@@ -63,6 +65,11 @@ const SuppliersInFileAndContentful = () => {
                       >
                         {pair.contentfulSupplier.name}
                       </TextLink>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <EntityStatusBadge
+                        entityStatus={pair.contentfulSupplier.status}
+                      />
                     </Table.Cell>
                     <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
                   </Table.Row>

@@ -10,6 +10,7 @@ import SuppliersNotInFile from "../SuppliersNotInFile";
 import { createClient } from "contentful-management";
 import { useSDK } from "@contentful/react-apps-toolkit";
 import { setWhitelabelSupplierId } from "../../state/supplierSlice";
+import { getStatus } from "../../helpers/getStatus";
 
 const ProcessScreen = () => {
   const sdk = useSDK();
@@ -21,13 +22,14 @@ const ProcessScreen = () => {
   useEffect(() => {
     if (status === AppStatus.FETCHING_CONTENTFUL_SUPPLIERS) {
       getPublishedSuppliers(cma).then((suppliers) => {
-        suppliers.items.forEach((s) => {
+        suppliers.forEach((s) => {
           dispatch(
             addContentfulSupplier({
               contentfulId: s.sys.id,
               id: parseInt(s.fields.supplierId["en-GB"], 10),
               name: s.fields.name["en-GB"],
               dataAvailable: s.fields.dataAvailable["en-GB"],
+              status: getStatus(s),
             }),
           );
 

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
 import {
   Box,
+  EntityStatusBadge,
   Heading,
   Paragraph,
   Table,
@@ -24,13 +25,14 @@ const SuppliersNotInFile = () => {
           <Table.Row>
             <Table.Cell>Supplier from Contentful</Table.Cell>
             <Table.Cell>Type</Table.Cell>
+            <Table.Cell>Status</Table.Cell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <LoadingTableRows
             showOnStatus={FETCHED_CONTENTFUL_SUPPLIERS}
             rowCount={3}
-            colCount={2}
+            colCount={3}
           >
             {suppliersNotInFile.map((pair) => {
               return (
@@ -52,6 +54,11 @@ const SuppliersNotInFile = () => {
                   <Table.Cell>
                     {getType(!pair.contentfulSupplier.dataAvailable)}
                   </Table.Cell>
+                  <Table.Cell>
+                    <EntityStatusBadge
+                      entityStatus={pair.contentfulSupplier.status}
+                    />
+                  </Table.Cell>
                 </Table.Row>
               );
             })}
@@ -65,8 +72,8 @@ const SuppliersNotInFile = () => {
     <Box marginTop="spacingXl" marginBottom="spacingXl">
       <Heading as="h2">Suppliers to be unpublished</Heading>
       <Paragraph marginBottom="spacingL">
-        These suppliers are not in the spreadsheet but are in Contentful and
-        currently showing on the energy table. Nothing will happen to them yet.
+        These suppliers are not in the spreadsheet but are in Contentful.
+        Nothing will happen to them yet.
       </Paragraph>
       {suppliersNotInFile && suppliersNotInFile.length > 0 ? (
         renderSuppliersNotInFile()
