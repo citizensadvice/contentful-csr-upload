@@ -1,12 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getContentfulSuppliersNotInFile } from "../selectors";
-import { Box, Heading, Paragraph, Table } from "@contentful/f36-components";
+import {
+  Box,
+  Heading,
+  Paragraph,
+  Table,
+  TextLink,
+} from "@contentful/f36-components";
 import { getType } from "../helpers/getType";
 import LoadingTableRows from "./LoadingTableRows";
 import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
+import { useSDK } from "@contentful/react-apps-toolkit";
 
 const SuppliersNotInFile = () => {
+  const sdk = useSDK();
   const suppliersNotInFile = useSelector(getContentfulSuppliersNotInFile);
 
   const renderSuppliersNotInFile = () => {
@@ -27,7 +35,20 @@ const SuppliersNotInFile = () => {
             {suppliersNotInFile.map((pair) => {
               return (
                 <Table.Row key={pair.contentfulSupplier.name}>
-                  <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
+                  <Table.Cell>
+                    <TextLink
+                      onClick={() =>
+                        sdk.navigator.openEntry(
+                          pair.contentfulSupplier.contentfulId,
+                          {
+                            slideIn: true,
+                          },
+                        )
+                      }
+                    >
+                      {pair.contentfulSupplier.name}
+                    </TextLink>
+                  </Table.Cell>
                   <Table.Cell>
                     {getType(!pair.contentfulSupplier.dataAvailable)}
                   </Table.Cell>

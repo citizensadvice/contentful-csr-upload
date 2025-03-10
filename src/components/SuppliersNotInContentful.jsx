@@ -22,11 +22,12 @@ const SuppliersNotInContentful = () => {
           <Table.Row>
             <Table.Cell>Supplier from spreadsheet</Table.Cell>
             <Table.Cell>Type</Table.Cell>
+            <Table.Cell>Supplier Id</Table.Cell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <LoadingTableRows
-            colCount={3}
+            colCount={4}
             rowCount={3}
             showOnStatus={FETCHED_CONTENTFUL_SUPPLIERS}
           >
@@ -35,6 +36,7 @@ const SuppliersNotInContentful = () => {
                 <Table.Row key={pair.supplier.id}>
                   <Table.Cell>{pair.supplier.name}</Table.Cell>
                   <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
+                  <Table.Cell>{pair.supplier.id}</Table.Cell>
                 </Table.Row>
               );
             })}
