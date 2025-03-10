@@ -34,6 +34,7 @@ describe("SuppliersNotInContentful component", () => {
       "I am a supplier that is in the file but not Contentful",
     );
     expect(columns[1].textContent).toContain("small");
+    expect(columns[2].textContent).toContain("9");
   });
 
   it("does not display suppliers in Contentful but not the file", () => {
