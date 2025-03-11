@@ -4,15 +4,20 @@ import { getMatchedSuppliersInContentful } from "../selectors";
 import {
   Badge,
   Box,
+  EntityStatusBadge,
   Heading,
   Paragraph,
   Table,
+  TextLink,
 } from "@contentful/f36-components";
 import { getType } from "../helpers/getType";
 import LoadingTableRows from "./LoadingTableRows";
 import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
+import { useSDK } from "@contentful/react-apps-toolkit";
 
 const SuppliersInFileAndContentful = () => {
+  const sdk = useSDK();
+
   const suppliersInFileAndContentful = useSelector(
     getMatchedSuppliersInContentful,
   );
@@ -33,6 +38,7 @@ const SuppliersInFileAndContentful = () => {
             <Table.Row>
               <Table.Cell>Supplier from spreadsheet</Table.Cell>
               <Table.Cell>Supplier in Contentful</Table.Cell>
+              <Table.Cell>Status</Table.Cell>
               <Table.Cell>Type</Table.Cell>
             </Table.Row>
           </Table.Head>
@@ -46,7 +52,25 @@ const SuppliersInFileAndContentful = () => {
                 return (
                   <Table.Row key={pair.supplier.id}>
                     <Table.Cell>{pair.supplier.name}</Table.Cell>
-                    <Table.Cell>{pair.contentfulSupplier.name}</Table.Cell>
+                    <Table.Cell>
+                      <TextLink
+                        onClick={() =>
+                          sdk.navigator.openEntry(
+                            pair.contentfulSupplier.contentfulId,
+                            {
+                              slideIn: true,
+                            },
+                          )
+                        }
+                      >
+                        {pair.contentfulSupplier.name}
+                      </TextLink>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <EntityStatusBadge
+                        entityStatus={pair.contentfulSupplier.status}
+                      />
+                    </Table.Cell>
                     <Table.Cell>{getType(pair.supplier.isSmall)}</Table.Cell>
                   </Table.Row>
                 );

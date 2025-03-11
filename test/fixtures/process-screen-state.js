@@ -36,18 +36,21 @@ const contentfulSuppliers = [
     id: "1",
     contentfulId: "1234",
     dataAvailable: true,
+    status: "published",
   },
   {
     name: "I am another supplier in Contentful",
     id: "2",
     contentfulId: "5678",
     dataAvailable: false,
+    status: "draft",
   },
   {
     name: "I am a Contentful supplier that isn't in the file",
     id: "99",
     contentfulId: "9101",
     dataAvailable: true,
+    status: "published",
   },
 ];
 

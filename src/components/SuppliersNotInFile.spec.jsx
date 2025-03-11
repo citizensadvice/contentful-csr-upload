@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { userEvent } from "@testing-library/user-event";
 
 import SuppliersNotInFile from "./SuppliersNotInFile";
 import { within } from "@testing-library/react";
@@ -9,6 +10,19 @@ import {
 } from "../../test/fixtures/process-screen-state";
 import { FETCHED_CONTENTFUL_SUPPLIERS } from "../constants/app-status";
 
+const openEntryMock = vi.fn();
+
+vi.mock("@contentful/react-apps-toolkit", () => {
+  return {
+    useSDK: () => {
+      return {
+        navigator: {
+          openEntry: openEntryMock,
+        },
+      };
+    },
+  };
+});
 describe("SuppliersNotInFile component", () => {
   const { getByRole, queryByText } = renderWithProvider(
     <SuppliersNotInFile />,
@@ -34,6 +48,18 @@ describe("SuppliersNotInFile component", () => {
       "I am a Contentful supplier that isn't in the file",
     );
     expect(columns[1].textContent).toContain("ranked");
+  });
+
+  it("displays a link to the supplier in Contentful", async () => {
+    const viewEntryLink = within(rows[0]).getByText(
+      "I am a Contentful supplier that isn't in the file",
+    );
+    expect(viewEntryLink).toBeTruthy();
+
+    const user = userEvent.setup();
+    await user.click(viewEntryLink);
+
+    expect(openEntryMock).toHaveBeenCalledOnce();
   });
 
   it("does not display suppliers in the file but not in Contentful", () => {
