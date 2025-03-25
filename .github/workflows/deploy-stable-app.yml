@@ -9,7 +9,7 @@ jobs:
   deploy:
     environment:
       name: stable
-    runs-on: ubuntu-latest
+    runs-on: runs-on
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
