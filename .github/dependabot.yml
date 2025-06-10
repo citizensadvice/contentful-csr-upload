@@ -1,9 +1,9 @@
 version: 2
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: weekly
+      interval: "weekly"
     groups:
       react-dependencies:
         patterns:
@@ -42,3 +42,15 @@ updates:
           - "minor"
       # anything not caught be these groups above will be a major non-testing, non-react js update and should be raised in its own PR
     target-branch: "main"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "[dependabot:actions] "
+    groups:
+      regular-updates: # Group everything except major version updates and security vulnerabilities
+        update-types:
+          - "minor"
+          - "patch"
