@@ -79,7 +79,8 @@
   "overrides": {
     "@contentful/app-scripts": {
       "contentful-management": "$contentful-management"
-    }
+    },
+    "tmp": "^0.2.4"
   },
   "homepage": "."
 }
