@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { getError } from "../selectors";
 import { MissingContent } from "@contentful/f36-components";
 import React, { useState } from "react";
-import { DoneIcon, ErrorCircleIcon } from "@contentful/f36-icons";
+import { CheckIcon, WarningOctagonIcon } from "@contentful/f36-icons";
 
 const ContentfulPutResult = ({
   supplierId,
@@ -30,7 +30,7 @@ const ContentfulPutResult = ({
     return (
       <React.Fragment>
         <Stack flexDirection="row" alignItems="center">
-          <ErrorCircleIcon variant="negative" />
+          <WarningOctagonIcon variant="negative" />
           <TextLink variant="negative" onClick={() => setShowModal(true)}>
             Error
           </TextLink>
@@ -74,7 +74,7 @@ const ContentfulPutResult = ({
   if (okStatus.includes(supplierStatus)) {
     return (
       <Stack flexDirection="row" alignItems="center">
-        <DoneIcon variant="positive" />
+        <CheckIcon variant="positive" />
         <TextLink variant="positive">OK</TextLink>
       </Stack>
     );
