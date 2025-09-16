@@ -9,7 +9,7 @@ import {
   Text,
   TextInput,
 } from "@contentful/f36-components";
-import { ErrorCircleIcon } from "@contentful/f36-icons";
+import { WarningOctagonIcon } from "@contentful/f36-icons";
 import { setAppStatus } from "../state/appStatusSlice";
 import { setScheduleTime } from "../state/scheduleTimeSlice";
 import { SCHEDULE_UPDATES, SCHEDULING_UPDATES } from "../constants/app-status";
@@ -61,7 +61,7 @@ const SchedulingForm = () => {
         />
         {error ? (
           <Stack alignItems="top">
-            <ErrorCircleIcon variant="negative" />
+            <WarningOctagonIcon variant="negative" />
             <Text fontColor="red600">{error}</Text>
           </Stack>
         ) : (
