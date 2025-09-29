@@ -2,6 +2,7 @@ name: Deploy stable app
 on:
   workflow_dispatch:
   workflow_run:
+    branches: [main]
     workflows: ["Feature tests"]
     types:
       - completed
