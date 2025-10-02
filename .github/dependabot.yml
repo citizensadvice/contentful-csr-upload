@@ -8,29 +8,43 @@ updates:
       react-dependencies:
         patterns:
           - "react*"
-          - "preact*"
           - "@testing-library/react"
-          - "@babel/react"
         update-types:
           - "minor"
           - "patch"
       major-react-dependencies:
         patterns:
           - "react*"
-          - "preact*"
           - "@testing-library/react"
         update-types:
           - "major"
       testing-dependencies:
         patterns:
+          - "@eslint/*"
+          - "@playwright/test"
           - "@testing-library/*"
-          - "@typescript-eslint/*"
+          - "@vitejs/plugin-react"
           - "eslint*"
-          - "jest*"
+          - "playwright"
           - "prettier"
-          - "stylelint*"
+        update-types:
+          - "minor"
+          - "patch"
+      major-testing-dependencies:
+        patterns:
+          - "@eslint/*"
+          - "@playwright/test"
+          - "@testing-library/*"
+          - "@vitejs/plugin-react"
+          - "eslint*"
+          - "playwright"
+          - "prettier"
         update-types:
           - "major"
+      contentful-dependencies:
+        patterns:
+          - "@contentful/*"
+        update-types:
           - "minor"
           - "patch"
       # everything else
