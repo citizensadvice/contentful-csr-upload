@@ -36,7 +36,7 @@ jobs:
           VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_REACT_APP_CONTENTFUL_SPACE_ID }}
           CONTENTFUL_APP_DEF_ID: ${{ secrets.UNSTABLE_APP_DEFINITION_ID }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: failure()
         with:
           name: playwright failiure report
