@@ -10,8 +10,8 @@
     "@contentful/f36-workbench": "^4.21.1",
     "@contentful/field-editor-slug": "^1.6.1",
     "@contentful/react-apps-toolkit": "1.2.16",
-    "@reduxjs/toolkit": "^2.10.1",
-    "contentful-management": "11.63.0",
+    "@reduxjs/toolkit": "^2.11.0",
+    "contentful-management": "11.63.1",
     "contentful-rich-text-html-parser": "^1.8.6",
     "marked": "^15.0.11",
     "papaparse": "^5.5.3",
@@ -69,12 +69,12 @@
     "eslint-plugin-react": "^7.37.5",
     "happy-dom": "^20.0.10",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.6",
+    "lint-staged": "^16.2.7",
     "npm-audit-resolver": "^3.0.0-RC.0",
     "playwright": "^1.56.1",
     "prettier": "^3.6.2",
     "vite": "^6.4.1",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.13"
   },
   "overrides": {
     "@contentful/app-scripts": {
