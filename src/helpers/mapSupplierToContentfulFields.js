@@ -12,6 +12,7 @@ const emptyContentfulSupplier = {
     contactEmail: null,
     contactRating: null,
     guaranteeRating: null,
+    expectationRating: null,
     supplierId: null,
     contactInfo: null,
     billingInfo: null,
@@ -44,6 +45,9 @@ const mapSupplierToContentfulFields = (
   };
   contentfulSupplier.fields.guaranteeRating = {
     "en-GB": supplier.guaranteeRating,
+  };
+  contentfulSupplier.fields.expectationRating = {
+    "en-GB": supplier.expectationRating,
   };
   contentfulSupplier.fields.supplierId = { "en-GB": parseInt(supplier.id, 10) };
   contentfulSupplier.fields.contactInfo = {

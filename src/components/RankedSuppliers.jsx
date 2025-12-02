@@ -17,6 +17,7 @@ const RankedSuppliers = ({ suppliers }) => {
             <Table.Cell>Complaints Rating</Table.Cell>
             <Table.Cell>Contact Rating</Table.Cell>
             <Table.Cell>Guarantee Rating</Table.Cell>
+            <Table.Cell>Expectation Rating</Table.Cell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
@@ -29,6 +30,7 @@ const RankedSuppliers = ({ suppliers }) => {
                 <Table.Cell>{s.complaintsRatings}</Table.Cell>
                 <Table.Cell>{s.contactRating}</Table.Cell>
                 <Table.Cell>{s.guaranteeRating}</Table.Cell>
+                <Table.Cell>{s.expectationRating}</Table.Cell>
               </Table.Row>
             );
           })}

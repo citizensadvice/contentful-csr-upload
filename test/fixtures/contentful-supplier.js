@@ -10,6 +10,7 @@ export const expectedFields = {
   contactSocialMedia: { "en-GB": "99,000" },
   contactTime: { "en-GB": "00:11:30" },
   guaranteeRating: { "en-GB": 4.32 },
+  expectationRating: { "en-GB": 4 },
   supplierId: { "en-GB": 1 },
   slug: { "en-GB": "test-supplier" },
   contactInfo: {
