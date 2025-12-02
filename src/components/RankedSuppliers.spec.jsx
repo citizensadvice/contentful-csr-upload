@@ -12,6 +12,7 @@ describe("RankedSuppliers component", () => {
       complaintsRatings: "3.9",
       contactRating: "2.9",
       guaranteeRating: "1.9",
+      expectationRating: "4",
       id: 1,
     },
     {
@@ -21,6 +22,7 @@ describe("RankedSuppliers component", () => {
       complaintsRatings: "2.9",
       contactRating: "1.9",
       guaranteeRating: "0.9",
+      expectationRating: "2",
       id: 2,
     },
   ];
@@ -42,6 +44,7 @@ describe("RankedSuppliers component", () => {
     expect(columns[3].textContent).toContain("3.9");
     expect(columns[4].textContent).toContain("2.9");
     expect(columns[5].textContent).toContain("1.9");
+    expect(columns[6].textContent).toContain("4");
   });
 
   it("does not render anything when there are no suppliers", () => {
