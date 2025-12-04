@@ -66,7 +66,7 @@ const mapSupplierToContentfulFields = (
     "en-GB": slugify(supplier.name),
   };
 
-  if (import.meta.env.VITE_REACT_APP_FF_COMPLAINT_SCORE === "true") {
+  if (import.meta.env.VITE_REACT_APP_FF_CSR_UPDATE === "true") {
     contentfulSupplier.fields.complaintsRatingScore = {
       "en-GB": supplier.complaintsRatingScore,
     };
