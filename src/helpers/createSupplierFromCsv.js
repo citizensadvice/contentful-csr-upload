@@ -1,7 +1,7 @@
 import { PARSED } from "../constants/supplier-status";
 
 const createSupplierFromCsv = (row) => {
-  return {
+  const supplier = {
     id: parseInt(row["SupplierId"]),
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
@@ -9,7 +9,6 @@ const createSupplierFromCsv = (row) => {
     isSmall: isSmall(row["dataAvailable"]),
     rank: parseInt(row["supplierRank"]),
     overallRating: parseFloat(row["overallRating"]),
-    complaintsRatings: parseInt(row["complaintsRating"]),
     complaintsNumber: parseFloat(row["complaintsNumber"]),
     contactRating: parseFloat(row["contactRating"]),
     contactTime: row["contactTime"],
@@ -23,6 +22,15 @@ const createSupplierFromCsv = (row) => {
     fuelMix: row["fuelMix"],
     status: PARSED,
   };
+
+  if (import.meta.env.VITE_REACT_APP_FF_UPDATE_CSR === "true") {
+    supplier.complaintsRatingScore = parseFloat(row["complaintsRating"]);
+    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
+  } else {
+    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
+  }
+
+  return supplier;
 };
 
 const isSmall = (dataAvailable) => {

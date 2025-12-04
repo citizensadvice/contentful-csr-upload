@@ -7,6 +7,7 @@ const emptyContentfulSupplier = {
     rank: null,
     complaintsNumber: null,
     complaintsRating: null,
+    complaintsRatingScore: null,
     dataAvailable: null,
     overallRating: null,
     contactEmail: null,
@@ -64,6 +65,12 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.slug = {
     "en-GB": slugify(supplier.name),
   };
+
+  if (import.meta.env.VITE_REACT_APP_FF_COMPLAINT_SCORE === "true") {
+    contentfulSupplier.fields.complaintsRatingScore = {
+      "en-GB": supplier.complaintsRatingScore,
+    };
+  }
 
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
