@@ -6,7 +6,7 @@ const emptyContentfulSupplier = {
     name: null,
     rank: null,
     complaintsNumber: null,
-    complaintsRating: null,
+    complaintsRatingScore: null,
     dataAvailable: null,
     overallRating: null,
     contactEmail: null,
@@ -30,9 +30,6 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.rank = { "en-GB": supplier.rank };
   contentfulSupplier.fields.complaintsNumber = {
     "en-GB": supplier.complaintsNumber,
-  };
-  contentfulSupplier.fields.complaintsRating = {
-    "en-GB": supplier.complaintsRatings,
   };
   contentfulSupplier.fields.dataAvailable = { "en-GB": !supplier.isSmall };
   contentfulSupplier.fields.overallRating = { "en-GB": supplier.overallRating };
@@ -64,6 +61,12 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.slug = {
     "en-GB": slugify(supplier.name),
   };
+
+  if (import.meta.env.VITE_REACT_APP_FF_COMPLAINT_SCORE === "true") {
+    contentfulSupplier.fields.complaintsRatingScore = {
+      "en-GB": supplier.complaintsRatingScore,
+    };
+  }
 
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
