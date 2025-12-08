@@ -24,7 +24,7 @@ const emptyContentfulSupplier = {
 
 const mapSupplierToContentfulFields = (
   supplier,
-  contentfulSupplier = emptyContentfulSupplier,
+  contentfulSupplier = structuredClone(emptyContentfulSupplier),
 ) => {
   contentfulSupplier.fields.name = { "en-GB": supplier.name };
   contentfulSupplier.fields.rank = { "en-GB": supplier.rank };
@@ -64,6 +64,12 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.slug = {
     "en-GB": slugify(supplier.name),
   };
+
+  if (supplier.complaintsRatingScore) {
+    contentfulSupplier.fields.complaintsRatingScore = {
+      "en-GB": supplier.complaintsRatingScore,
+    };
+  }
 
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {

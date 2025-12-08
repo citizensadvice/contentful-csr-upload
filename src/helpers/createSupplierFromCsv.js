@@ -1,7 +1,7 @@
 import { PARSED } from "../constants/supplier-status";
 
 const createSupplierFromCsv = (row) => {
-  return {
+  const supplier = {
     id: parseInt(row["SupplierId"]),
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
@@ -23,6 +23,16 @@ const createSupplierFromCsv = (row) => {
     fuelMix: row["fuelMix"],
     status: PARSED,
   };
+
+  if (import.meta.env.VITE_REACT_APP_FF_UPDATE_CSR === "true") {
+    const clonedRow = { ...row };
+    supplier.complaintsRatingScore = parseFloat(clonedRow["complaintsRating"]);
+    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
+  } else {
+    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
+  }
+
+  return supplier;
 };
 
 const isSmall = (dataAvailable) => {
