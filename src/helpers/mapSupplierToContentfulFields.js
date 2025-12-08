@@ -66,6 +66,8 @@ const mapSupplierToContentfulFields = (
     "en-GB": slugify(supplier.name),
   };
 
+  console.log(supplier.complaintsRatingScore);
+
   contentfulSupplier.fields.complaintsRatingScore = {
     "en-GB": supplier.complaintsRatingScore,
   };
