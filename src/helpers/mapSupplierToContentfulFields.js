@@ -66,7 +66,7 @@ const mapSupplierToContentfulFields = (
     "en-GB": slugify(supplier.name),
   };
 
-  if (supplier.complaintsRatingScore !== undefined) {
+  if (supplier.complaintsRatingScore) {
     contentfulSupplier.fields.complaintsRatingScore = {
       "en-GB": supplier.complaintsRatingScore,
     };
