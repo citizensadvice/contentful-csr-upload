@@ -30,6 +30,7 @@ const updateSupplier = async (pair, cma) => {
   );
 
   mapSupplierToContentfulFields(pair.supplier, contentfulSupplier);
+  console.log(contentfulSupplier);
   return contentfulSupplier.update();
 };
 
