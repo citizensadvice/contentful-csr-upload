@@ -66,11 +66,11 @@ const mapSupplierToContentfulFields = (
     "en-GB": slugify(supplier.name),
   };
 
-  console.log(supplier.complaintsRatingScore);
-
-  contentfulSupplier.fields.complaintsRatingScore = {
-    "en-GB": supplier.complaintsRatingScore,
-  };
+  if (supplier.complaintsRatingScore !== undefined) {
+    contentfulSupplier.fields.complaintsRatingScore = {
+      "en-GB": supplier.complaintsRatingScore,
+    };
+  }
 
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
