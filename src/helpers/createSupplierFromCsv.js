@@ -27,6 +27,9 @@ const createSupplierFromCsv = (row) => {
   if (import.meta.env.VITE_REACT_APP_FF_NEW_CSR_DATA === "true") {
     supplier.complaintsRatings = parseInt(row["complaintsRating"]);
     supplier.complaintsRatingScore = parseFloat(row["complaintsRating"]);
+    supplier.billAccuracyAndMeteringRating = parseFloat(
+      row["billAccuracyandMeteringRating"],
+    );
   } else {
     supplier.complaintsRatings = parseInt(row["complaintsRating"]);
   }

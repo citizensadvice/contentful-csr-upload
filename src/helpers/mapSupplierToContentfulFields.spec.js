@@ -58,6 +58,18 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("populates the billAccuracyAndMeteringRating field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.billAccuracyAndMeteringRating = 2;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.billAccuracyAndMeteringRating = { "en-GB": 2 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
   it("does not create text nodes at the top level of the content JSON", () => {
     const supplier = mapSupplierToContentfulFields(testSupplier);
     const content = supplier.fields.billingInfo["en-GB"].content;
