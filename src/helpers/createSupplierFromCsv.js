@@ -24,7 +24,7 @@ const createSupplierFromCsv = (row) => {
     status: PARSED,
   };
 
-  if (import.meta.env.VITE_REACT_APP_FF_UPDATE_CSR === "true") {
+  if (import.meta.env.VITE_REACT_APP_FF_NEW_CSR_DATA === "true") {
     const clonedRow = { ...row };
     supplier.complaintsRatingScore = parseFloat(clonedRow["complaintsRating"]);
     supplier.complaintsRatings = parseInt(row["complaintsRating"]);

@@ -32,7 +32,7 @@ const smallSupplierRow = {
 };
 
 describe("createSupplierFromCsv", () => {
-  describe("when VITE_REACT_APP_FF_UPDATE_CSR is not enabled", () => {
+  describe("when VITE_REACT_APP_FF_NEW_CSR_DATA is not enabled", () => {
     it("parses a well formed row into a correct supplier object", () => {
       const expectedSupplier = {
         id: 1,
@@ -61,9 +61,9 @@ describe("createSupplierFromCsv", () => {
     });
   });
 
-  describe("when VITE_REACT_APP_FF_UPDATE_CSR is enabled", () => {
+  describe("when VITE_REACT_APP_FF_NEW_CSR_DATA is enabled", () => {
     it("parses a well formed row into a correct supplier object", () => {
-      vi.stubEnv("VITE_REACT_APP_FF_UPDATE_CSR", "true");
+      vi.stubEnv("VITE_REACT_APP_FF_NEW_CSR_DATA", "true");
       const expectedSupplier = {
         id: 1,
         name: "Energy supplier 1",
