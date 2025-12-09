@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 
 import createSupplierFromCsv from "./createSupplierFromCsv";
 import { PARSED } from "../constants/supplier-status";
@@ -32,31 +32,68 @@ const smallSupplierRow = {
 };
 
 describe("createSupplierFromCsv", () => {
-  it("parses a well formed row into a correct supplier object", () => {
-    const expectedSupplier = {
-      id: 1,
-      name: "Energy supplier 1",
-      whiteLabelId: "100",
-      whitelabelSupplierContentfulId: undefined,
-      isSmall: false,
-      rank: 1,
-      overallRating: 1.1,
-      complaintsRatings: 2,
-      complaintsNumber: 1.1,
-      contactRating: 1.1,
-      contactTime: "00:11:22",
-      contactEmail: 100,
-      contactSocialMedia: "10,000",
-      guaranteeRating: 1.1,
-      guaranteesList: " - item 1\n - item 2",
-      contactInfo: "[email@email.com](mailto:email@email.com)",
-      billingInfo: "Debit card: Yes",
-      openingHours: "M-F 0900 - 1900",
-      fuelMix: "Renewable: 100%",
-      status: PARSED,
-    };
+  describe("when VITE_REACT_APP_FF_NEW_CSR_DATA is not enabled", () => {
+    it("parses a well formed row into a correct supplier object", () => {
+      const expectedSupplier = {
+        id: 1,
+        name: "Energy supplier 1",
+        whiteLabelId: "100",
+        whitelabelSupplierContentfulId: undefined,
+        isSmall: false,
+        rank: 1,
+        overallRating: 1.1,
+        complaintsRatings: 2,
+        complaintsNumber: 1.1,
+        contactRating: 1.1,
+        contactTime: "00:11:22",
+        contactEmail: 100,
+        contactSocialMedia: "10,000",
+        guaranteeRating: 1.1,
+        guaranteesList: " - item 1\n - item 2",
+        contactInfo: "[email@email.com](mailto:email@email.com)",
+        billingInfo: "Debit card: Yes",
+        openingHours: "M-F 0900 - 1900",
+        fuelMix: "Renewable: 100%",
+        status: PARSED,
+      };
 
-    expect(createSupplierFromCsv(row)).toEqual(expectedSupplier);
+      expect(createSupplierFromCsv(row)).toEqual(expectedSupplier);
+    });
+  });
+
+  describe("when VITE_REACT_APP_FF_NEW_CSR_DATA is enabled", () => {
+    it("parses a well formed row into a correct supplier object", () => {
+      vi.stubEnv("VITE_REACT_APP_FF_NEW_CSR_DATA", "true");
+      const expectedSupplier = {
+        id: 1,
+        name: "Energy supplier 1",
+        whiteLabelId: "100",
+        whitelabelSupplierContentfulId: undefined,
+        isSmall: false,
+        rank: 1,
+        overallRating: 1.1,
+        complaintsRatings: 2,
+        complaintsRatingScore: 2.4,
+        complaintsNumber: 1.1,
+        contactRating: 1.1,
+        contactTime: "00:11:22",
+        contactEmail: 100,
+        contactSocialMedia: "10,000",
+        guaranteeRating: 1.1,
+        guaranteesList: " - item 1\n - item 2",
+        contactInfo: "[email@email.com](mailto:email@email.com)",
+        billingInfo: "Debit card: Yes",
+        openingHours: "M-F 0900 - 1900",
+        fuelMix: "Renewable: 100%",
+        status: PARSED,
+      };
+
+      const supplierRow = structuredClone(row);
+      supplierRow.complaintsRating = "2.4";
+
+      expect(createSupplierFromCsv(supplierRow)).toEqual(expectedSupplier);
+      vi.unstubAllEnvs();
+    });
   });
 
   it("parses missing numerical data into NaN", () => {

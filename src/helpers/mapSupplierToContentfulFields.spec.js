@@ -46,6 +46,18 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("populates the complaintsRatingScore field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.complaintsRatingScore = 3.4;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.complaintsRatingScore = { "en-GB": 3.4 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
   it("does not create text nodes at the top level of the content JSON", () => {
     const supplier = mapSupplierToContentfulFields(testSupplier);
     const content = supplier.fields.billingInfo["en-GB"].content;
@@ -56,10 +68,10 @@ describe("mapSupplierToContentfulFields", () => {
   });
 
   it("handles empty supplier fields", () => {
-    let supplier = testSupplier;
+    let supplier = structuredClone(testSupplier);
     supplier.billingInfo = undefined;
 
-    let expectedSupplierFields = expectedFields;
+    let expectedSupplierFields = structuredClone(expectedFields);
     expectedSupplierFields.billingInfo["en-GB"] = undefined;
 
     expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
