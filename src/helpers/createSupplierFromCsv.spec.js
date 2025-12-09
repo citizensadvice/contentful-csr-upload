@@ -91,7 +91,6 @@ describe("createSupplierFromCsv", () => {
       const supplierRow = structuredClone(row);
       supplierRow.complaintsRating = "2.4";
 
-      console.log(expectedSupplier);
       expect(createSupplierFromCsv(supplierRow)).toEqual(expectedSupplier);
       vi.unstubAllEnvs();
     });
