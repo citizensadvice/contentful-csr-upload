@@ -71,6 +71,12 @@ const mapSupplierToContentfulFields = (
     };
   }
 
+  if (supplier.billAccuracyAndMeteringRating) {
+    contentfulSupplier.fields.billAccuracyAndMeteringRating = {
+      "en-GB": supplier.billAccuracyAndMeteringRating,
+    };
+  }
+
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
       "en-GB": {
