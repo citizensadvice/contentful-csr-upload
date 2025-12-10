@@ -77,6 +77,66 @@ const mapSupplierToContentfulFields = (
     };
   }
 
+  if (supplier.contactWebchatSync) {
+    contentfulSupplier.fields.contactWebchatSync = {
+      "en-GB": supplier.contactWebchatSync,
+    };
+  }
+
+  if (supplier.contactWebchatAsync) {
+    contentfulSupplier.fields.contactWebchatAsync = {
+      "en-GB": supplier.contactWebchatAsync,
+    };
+  }
+
+  if (supplier.contactInAppSync) {
+    contentfulSupplier.fields.contactInAppSync = {
+      "en-GB": supplier.contactInAppSync,
+    };
+  }
+
+  if (supplier.contactInAppAsync) {
+    contentfulSupplier.fields.contactInAppAsync = {
+      "en-GB": supplier.contactInAppAsync,
+    };
+  }
+
+  if (supplier.contactWhatsappSync) {
+    contentfulSupplier.fields.contactWhatsappSync = {
+      "en-GB": supplier.contactWhatsappSync,
+    };
+  }
+
+  if (supplier.contactWhatsappAsync) {
+    contentfulSupplier.fields.contactWhatsappAsync = {
+      "en-GB": supplier.contactWhatsappAsync,
+    };
+  }
+
+  if (supplier.contactSmsSync) {
+    contentfulSupplier.fields.contactSmsSync = {
+      "en-GB": supplier.contactSmsSync,
+    };
+  }
+
+  if (supplier.contactSmsAsync) {
+    contentfulSupplier.fields.contactSmsAsync = {
+      "en-GB": supplier.contactSmsAsync,
+    };
+  }
+
+  if (supplier.contactPortalSync) {
+    contentfulSupplier.fields.contactPortalSync = {
+      "en-GB": supplier.contactPortalSync,
+    };
+  }
+
+  if (supplier.contactPortalAsync) {
+    contentfulSupplier.fields.contactPortalAsync = {
+      "en-GB": supplier.contactPortalAsync,
+    };
+  }
+
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
       "en-GB": {
