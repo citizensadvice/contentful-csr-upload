@@ -87,11 +87,31 @@ describe("createSupplierFromCsv", () => {
         openingHours: "M-F 0900 - 1900",
         fuelMix: "Renewable: 100%",
         status: PARSED,
+        contactWebchatSync: "00:01:22",
+        contactWebchatAsync: 67.4,
+        contactInAppSync: "00:04:32",
+        contactInAppAsync: 93.1,
+        contactWhatsappSync: "00:01:41",
+        contactWhatsappAsync: 84.7,
+        contactSmsSync: "00:00:22",
+        contactSmsAsync: 66.8,
+        contactPortalSync: "00:05:45",
+        contactPortalAsync: 99.9,
       };
 
       const supplierRow = structuredClone(row);
       supplierRow.complaintsRating = "2.4";
       supplierRow.billAccuracyandMeteringRating = "3";
+      supplierRow.contactWebchatSync = "00:01:22";
+      supplierRow["contactWebchatAsync%"] = "67.4";
+      supplierRow.contactInAppSync = "00:04:32";
+      supplierRow["contactInAppAsync%"] = "93.1";
+      supplierRow.contactWhatsappSync = "00:01:41";
+      supplierRow["contactWhatsappAsync%"] = "84.7";
+      supplierRow.contactSMSSync = "00:00:22";
+      supplierRow["contactSMSAsync%"] = "66.8";
+      supplierRow.contactPortalSync = "00:05:45";
+      supplierRow["contactPortalAsync%"] = "99.9";
 
       expect(createSupplierFromCsv(supplierRow)).toEqual(expectedSupplier);
       vi.unstubAllEnvs();

@@ -70,6 +70,147 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("does not populate the billAccuracyAndMeteringRating field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("billAccuracyAndMeteringRating");
+  });
+
+  it("populates the contactWebchatSync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactWebchatSync = "00:31:08";
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactWebchatSync = { "en-GB": "00:31:08" };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("does not populate the contactWebchatSync field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("contactWebchatSync");
+  });
+
+  it("populates the contactWebchatAsync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactWebchatAsync = 98.6;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactWebchatAsync = { "en-GB": 98.6 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("does not populate the contactWebchatAsync field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("contactWebchatAsync");
+  });
+
+  it("populates the contactInAppSync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactInAppSync = "00:03:18";
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactInAppSync = { "en-GB": "00:03:18" };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactInAppAsync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactInAppAsync = 28.9;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactInAppAsync = { "en-GB": 28.9 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactWhatsappSync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactWhatsappSync = "00:09:09";
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactWhatsappSync = { "en-GB": "00:09:09" };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactWhatsappAsync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactWhatsappAsync = 82.9;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactWhatsappAsync = { "en-GB": 82.9 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactSmsSync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactSmsSync = "00:19:39";
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactSmsSync = { "en-GB": "00:19:39" };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactSmsAsync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactSmsAsync = 92.9;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactSmsAsync = { "en-GB": 92.9 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactPortalSync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactPortalSync = "01:14:02";
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactPortalSync = { "en-GB": "01:14:02" };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("populates the contactSmsAsync field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.contactSmsAsync = 58.1;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.contactSmsAsync = { "en-GB": 58.1 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
   it("does not create text nodes at the top level of the content JSON", () => {
     const supplier = mapSupplierToContentfulFields(testSupplier);
     const content = supplier.fields.billingInfo["en-GB"].content;

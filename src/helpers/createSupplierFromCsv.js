@@ -30,6 +30,16 @@ const createSupplierFromCsv = (row) => {
     supplier.billAccuracyAndMeteringRating = parseFloat(
       row["billAccuracyandMeteringRating"],
     );
+    supplier.contactWebchatSync = row["contactWebchatSync"];
+    supplier.contactWebchatAsync = parseFloat(row["contactWebchatAsync%"]);
+    supplier.contactInAppSync = row["contactInAppSync"];
+    supplier.contactInAppAsync = parseFloat(row["contactInAppAsync%"]);
+    supplier.contactWhatsappSync = row["contactWhatsappSync"];
+    supplier.contactWhatsappAsync = parseFloat(row["contactWhatsappAsync%"]);
+    supplier.contactSmsSync = row["contactSMSSync"];
+    supplier.contactSmsAsync = parseFloat(row["contactSMSAsync%"]);
+    supplier.contactPortalSync = row["contactPortalSync"];
+    supplier.contactPortalAsync = parseFloat(row["contactPortalAsync%"]);
   } else {
     supplier.complaintsRatings = parseInt(row["complaintsRating"]);
   }
