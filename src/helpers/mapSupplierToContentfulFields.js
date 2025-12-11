@@ -137,6 +137,24 @@ const mapSupplierToContentfulFields = (
     };
   }
 
+  if (supplier.billsAccuracySmart) {
+    contentfulSupplier.fields.billsAccuracySmart = {
+      "en-GB": supplier.billsAccuracySmart,
+    };
+  }
+
+  if (supplier.billsAccuracyTraditional) {
+    contentfulSupplier.fields.billsAccuracyTraditional = {
+      "en-GB": supplier.billsAccuracyTraditional,
+    };
+  }
+
+  if (supplier.smartOperating) {
+    contentfulSupplier.fields.smartOperating = {
+      "en-GB": supplier.smartOperating,
+    };
+  }
+
   if (supplier.whitelabelSupplierContentfulId) {
     contentfulSupplier.fields["whitelabelSupplier"] = {
       "en-GB": {
