@@ -40,6 +40,11 @@ const createSupplierFromCsv = (row) => {
     supplier.contactSmsAsync = parseFloat(row["contactSMSAsync%"]);
     supplier.contactPortalSync = row["contactPortalSync"];
     supplier.contactPortalAsync = parseFloat(row["contactPortalAsync%"]);
+    supplier.billsAccuracySmart = parseFloat(row["billsAccuracySmart%"]);
+    supplier.billsAccuracyTraditional = parseFloat(
+      row["billsAccuracyTraditional%"],
+    );
+    supplier.smartOperating = parseFloat(row["smartOperating%"]);
   } else {
     supplier.complaintsRatings = parseInt(row["complaintsRating"]);
   }

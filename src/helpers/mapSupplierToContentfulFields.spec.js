@@ -211,6 +211,63 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("populates the billsAccuracySmart field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.billsAccuracySmart = 78.9;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.billsAccuracySmart = { "en-GB": 78.9 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("does not populate the billsAccuracySmart field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("billsAccuracySmart");
+  });
+
+  it("populates the billsAccuracyTraditional field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.billsAccuracyTraditional = 86.3;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.billsAccuracyTraditional = { "en-GB": 86.3 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("does not populate the billsAccuracyTraditional field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("billsAccuracyTraditional");
+  });
+
+  it("populates the smartOperating field if present", () => {
+    let supplier = structuredClone(testSupplier);
+    supplier.smartOperating = 99.9;
+
+    let expectedSupplierFields = structuredClone(expectedFields);
+    expectedSupplierFields.smartOperating = { "en-GB": 99.9 };
+
+    expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
+      expectedSupplierFields,
+    );
+  });
+
+  it("does not populate the smartOperating field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("smartOperating");
+  });
+
   it("does not create text nodes at the top level of the content JSON", () => {
     const supplier = mapSupplierToContentfulFields(testSupplier);
     const content = supplier.fields.billingInfo["en-GB"].content;
