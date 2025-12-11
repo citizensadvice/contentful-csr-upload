@@ -70,6 +70,13 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("does not populate the billAccuracyAndMeteringRating field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("billAccuracyAndMeteringRating");
+  });
+
   it("populates the contactWebchatSync field if present", () => {
     let supplier = structuredClone(testSupplier);
     supplier.contactWebchatSync = "00:31:08";
@@ -82,6 +89,13 @@ describe("mapSupplierToContentfulFields", () => {
     );
   });
 
+  it("does not populate the contactWebchatSync field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("contactWebchatSync");
+  });
+
   it("populates the contactWebchatAsync field if present", () => {
     let supplier = structuredClone(testSupplier);
     supplier.contactWebchatAsync = 98.6;
@@ -92,6 +106,13 @@ describe("mapSupplierToContentfulFields", () => {
     expect(mapSupplierToContentfulFields(supplier).fields).toEqual(
       expectedSupplierFields,
     );
+  });
+
+  it("does not populate the contactWebchatAsync field if not present", () => {
+    const supplier = mapSupplierToContentfulFields(testSupplier).fields;
+    const keys = Object.keys(supplier);
+
+    expect(keys).not.toContain("contactWebchatAsync");
   });
 
   it("populates the contactInAppSync field if present", () => {
