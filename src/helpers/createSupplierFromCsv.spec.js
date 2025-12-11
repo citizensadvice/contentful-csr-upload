@@ -97,6 +97,9 @@ describe("createSupplierFromCsv", () => {
         contactSmsAsync: 66.8,
         contactPortalSync: "00:05:45",
         contactPortalAsync: 99.9,
+        billsAccuracySmart: 92.3,
+        billsAccuracyTraditional: 87.5,
+        smartOperating: 76.1,
       };
 
       const supplierRow = structuredClone(row);
@@ -112,6 +115,9 @@ describe("createSupplierFromCsv", () => {
       supplierRow["contactSMSAsync%"] = "66.8";
       supplierRow.contactPortalSync = "00:05:45";
       supplierRow["contactPortalAsync%"] = "99.9";
+      supplierRow["billsAccuracySmart%"] = "92.3";
+      supplierRow["billsAccuracyTraditional%"] = "87.5";
+      supplierRow["smartOperating%"] = "76.1";
 
       expect(createSupplierFromCsv(supplierRow)).toEqual(expectedSupplier);
       vi.unstubAllEnvs();
