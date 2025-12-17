@@ -7,6 +7,11 @@ const emptyContentfulSupplier = {
     rank: null,
     complaintsNumber: null,
     complaintsRating: null,
+    complaintsRatingScore: null,
+    billAccuracyAndMeteringRating: null,
+    billsAccuracySmart: null,
+    billsAccuracyTraditional: null,
+    smartOperating: null,
     dataAvailable: null,
     overallRating: null,
     contactEmail: null,
@@ -64,22 +69,29 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.slug = {
     "en-GB": slugify(supplier.name),
   };
-
-  if (supplier.complaintsRatingScore) {
-    contentfulSupplier.fields.complaintsRatingScore = {
-      "en-GB": supplier.complaintsRatingScore,
-    };
-  }
-
-  if (supplier.billAccuracyAndMeteringRating) {
-    contentfulSupplier.fields.billAccuracyAndMeteringRating = {
-      "en-GB": supplier.billAccuracyAndMeteringRating,
-    };
-  }
+  contentfulSupplier.fields.complaintsRatingScore = {
+    "en-GB": supplier.complaintsRatingScore,
+  };
+  contentfulSupplier.fields.billAccuracyAndMeteringRating = {
+    "en-GB": supplier.billAccuracyAndMeteringRating,
+  };
+  contentfulSupplier.fields.billsAccuracySmart = {
+    "en-GB": supplier.billsAccuracySmart,
+  };
+  contentfulSupplier.fields.billsAccuracyTraditional = {
+    "en-GB": supplier.billsAccuracyTraditional,
+  };
+  contentfulSupplier.fields.smartOperating = {
+    "en-GB": supplier.smartOperating,
+  };
 
   if (supplier.contactWebchatSync) {
     contentfulSupplier.fields.contactWebchatSync = {
       "en-GB": supplier.contactWebchatSync,
+    };
+  } else {
+    contentfulSupplier.fields.contactWebchatSync = {
+      "en-GB": "",
     };
   }
 
@@ -87,11 +99,19 @@ const mapSupplierToContentfulFields = (
     contentfulSupplier.fields.contactWebchatAsync = {
       "en-GB": supplier.contactWebchatAsync,
     };
+  } else {
+    contentfulSupplier.fields.contactWebchatAsync = {
+      "en-GB": null,
+    };
   }
 
   if (supplier.contactInAppSync) {
     contentfulSupplier.fields.contactInAppSync = {
       "en-GB": supplier.contactInAppSync,
+    };
+  } else {
+    contentfulSupplier.fields.contactInAppSync = {
+      "en-GB": "",
     };
   }
 
@@ -99,11 +119,19 @@ const mapSupplierToContentfulFields = (
     contentfulSupplier.fields.contactInAppAsync = {
       "en-GB": supplier.contactInAppAsync,
     };
+  } else {
+    contentfulSupplier.fields.contactInAppAsync = {
+      "en-GB": null,
+    };
   }
 
   if (supplier.contactWhatsappSync) {
     contentfulSupplier.fields.contactWhatsappSync = {
       "en-GB": supplier.contactWhatsappSync,
+    };
+  } else {
+    contentfulSupplier.fields.contactWhatsappSync = {
+      "en-GB": "",
     };
   }
 
@@ -111,11 +139,19 @@ const mapSupplierToContentfulFields = (
     contentfulSupplier.fields.contactWhatsappAsync = {
       "en-GB": supplier.contactWhatsappAsync,
     };
+  } else {
+    contentfulSupplier.fields.contactWhatsappAsync = {
+      "en-GB": null,
+    };
   }
 
   if (supplier.contactSmsSync) {
     contentfulSupplier.fields.contactSmsSync = {
       "en-GB": supplier.contactSmsSync,
+    };
+  } else {
+    contentfulSupplier.fields.contactSmsSync = {
+      "en-GB": "",
     };
   }
 
@@ -123,11 +159,19 @@ const mapSupplierToContentfulFields = (
     contentfulSupplier.fields.contactSmsAsync = {
       "en-GB": supplier.contactSmsAsync,
     };
+  } else {
+    contentfulSupplier.fields.contactSmsAsync = {
+      "en-GB": null,
+    };
   }
 
   if (supplier.contactPortalSync) {
     contentfulSupplier.fields.contactPortalSync = {
       "en-GB": supplier.contactPortalSync,
+    };
+  } else {
+    contentfulSupplier.fields.contactPortalSync = {
+      "en-GB": "",
     };
   }
 
@@ -135,23 +179,9 @@ const mapSupplierToContentfulFields = (
     contentfulSupplier.fields.contactPortalAsync = {
       "en-GB": supplier.contactPortalAsync,
     };
-  }
-
-  if (supplier.billsAccuracySmart) {
-    contentfulSupplier.fields.billsAccuracySmart = {
-      "en-GB": supplier.billsAccuracySmart,
-    };
-  }
-
-  if (supplier.billsAccuracyTraditional) {
-    contentfulSupplier.fields.billsAccuracyTraditional = {
-      "en-GB": supplier.billsAccuracyTraditional,
-    };
-  }
-
-  if (supplier.smartOperating) {
-    contentfulSupplier.fields.smartOperating = {
-      "en-GB": supplier.smartOperating,
+  } else {
+    contentfulSupplier.fields.contactPortalAsync = {
+      "en-GB": null,
     };
   }
 

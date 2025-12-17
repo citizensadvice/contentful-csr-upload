@@ -28,7 +28,6 @@ jobs:
         env:
           VITE_REACT_APP_CONTENTFUL_ENV: ${{ vars.CONTENTFUL_ENV }}
           VITE_REACT_APP_CONTENTFUL_SPACE_ID: ${{ vars.CONTENTFUL_SPACE_ID }}
-          VITE_REACT_APP_FF_NEW_CSR_DATA: ${{ vars.VITE_REACT_APP_FF_NEW_CSR_DATA }}
 
       - name: Deploy
         run: npm run upload-ci -- --comment "Deployed by GitHub ${GITHUB_SHA}"
