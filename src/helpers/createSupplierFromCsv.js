@@ -1,7 +1,7 @@
 import { PARSED } from "../constants/supplier-status";
 
 const createSupplierFromCsv = (row) => {
-  const supplier = {
+  return {
     id: parseInt(row["SupplierId"]),
     name: row["supplierName"],
     whiteLabelId: row["whiteLabelId"],
@@ -17,39 +17,29 @@ const createSupplierFromCsv = (row) => {
     contactSocialMedia: row["contactSocialMedia"],
     guaranteeRating: parseFloat(row["guaranteeRating"]),
     guaranteesList: row["guaranteesList"],
+    complaintsRatingScore: parseFloat(row["complaintsRating"]),
+    billAccuracyAndMeteringRating: parseFloat(
+      row["billAccuracyandMeteringRating"],
+    ),
+    contactWebchatSync: row["contactWebchatSync"],
+    contactWebchatAsync: parseFloat(row["contactWebchatAsync%"]),
+    contactInAppSync: row["contactInAppSync"],
+    contactInAppAsync: parseFloat(row["contactInAppAsync%"]),
+    contactWhatsappSync: row["contactWhatsappSync"],
+    contactWhatsappAsync: parseFloat(row["contactWhatsappAsync%"]),
+    contactSmsSync: row["contactSMSSync"],
+    contactSmsAsync: parseFloat(row["contactSMSAsync%"]),
+    contactPortalSync: row["contactPortalSync"],
+    contactPortalAsync: parseFloat(row["contactPortalAsync%"]),
+    billsAccuracySmart: parseFloat(row["billsAccuracySmart%"]),
+    billsAccuracyTraditional: parseFloat(row["billsAccuracyTraditional%"]),
+    smartOperating: parseFloat(row["smartOperating%"]),
     contactInfo: row["contactInformation"],
     billingInfo: row["billingInformation"],
     openingHours: row["openingHours"],
     fuelMix: row["fuelMix"],
     status: PARSED,
   };
-
-  if (import.meta.env.VITE_REACT_APP_FF_NEW_CSR_DATA === "true") {
-    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
-    supplier.complaintsRatingScore = parseFloat(row["complaintsRating"]);
-    supplier.billAccuracyAndMeteringRating = parseFloat(
-      row["billAccuracyandMeteringRating"],
-    );
-    supplier.contactWebchatSync = row["contactWebchatSync"];
-    supplier.contactWebchatAsync = parseFloat(row["contactWebchatAsync%"]);
-    supplier.contactInAppSync = row["contactInAppSync"];
-    supplier.contactInAppAsync = parseFloat(row["contactInAppAsync%"]);
-    supplier.contactWhatsappSync = row["contactWhatsappSync"];
-    supplier.contactWhatsappAsync = parseFloat(row["contactWhatsappAsync%"]);
-    supplier.contactSmsSync = row["contactSMSSync"];
-    supplier.contactSmsAsync = parseFloat(row["contactSMSAsync%"]);
-    supplier.contactPortalSync = row["contactPortalSync"];
-    supplier.contactPortalAsync = parseFloat(row["contactPortalAsync%"]);
-    supplier.billsAccuracySmart = parseFloat(row["billsAccuracySmart%"]);
-    supplier.billsAccuracyTraditional = parseFloat(
-      row["billsAccuracyTraditional%"],
-    );
-    supplier.smartOperating = parseFloat(row["smartOperating%"]);
-  } else {
-    supplier.complaintsRatings = parseInt(row["complaintsRating"]);
-  }
-
-  return supplier;
 };
 
 const isSmall = (dataAvailable) => {
