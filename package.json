@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@contentful/app-sdk": "^4.47.0",
+    "@contentful/app-sdk": "^4.51.0",
     "@contentful/f36-components": "4.80.2",
     "@contentful/f36-icons": "^4.29.0",
     "@contentful/f36-tokens": "5.1.0",
