@@ -80,7 +80,8 @@
     "@contentful/app-scripts": {
       "contentful-management": "$contentful-management"
     },
-    "tmp": "^0.2.4"
+    "tmp": "^0.2.4",
+    "tar": "^7.5.3"
   },
   "homepage": "."
 }
