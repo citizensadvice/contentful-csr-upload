@@ -55,10 +55,10 @@ const mapSupplierToContentfulFields = (
     "en-GB": markdownToJson(supplier.contactInfo),
   };
   contentfulSupplier.fields.billingInfo = {
-    "en-GB": markdownToJson(supplier.billingInfo),
+    "en-GB": markdownToJson(supplier.billingInfo, { stripWhitespace: true }),
   };
   contentfulSupplier.fields.fuelMix = {
-    "en-GB": markdownToJson(supplier.fuelMix),
+    "en-GB": markdownToJson(supplier.fuelMix, { stripWhitespace: true }),
   };
   contentfulSupplier.fields.guaranteeList = {
     "en-GB": markdownToJson(supplier.guaranteesList, { stripWhitespace: true }),
