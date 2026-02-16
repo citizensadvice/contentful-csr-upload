@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^2.11.2",
     "contentful-management": "11.69.1",
     "contentful-rich-text-html-parser": "^1.8.7",
-    "marked": "^15.0.11",
+    "marked": "^17.0.1",
     "papaparse": "^5.5.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
