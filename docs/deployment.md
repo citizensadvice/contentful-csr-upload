@@ -15,7 +15,7 @@ The deployment workflow is:
 - develop locally
 - raise PR
 - merge to `main` will deploy the unstable app
-- feature tests run against unstable app
+- manually test the unstable app - see [testing docs](testing.md) for details
 - deploy stable app
 
 ## Versions and Rollback
