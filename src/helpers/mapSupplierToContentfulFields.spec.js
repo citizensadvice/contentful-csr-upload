@@ -21,7 +21,6 @@ const testSupplier = {
   contactRating: Number("3"),
   contactTime: "00:11:30",
   contactEmail: Number(99.3),
-  contactSocialMedia: "99,000",
   guaranteeRating: Number("4.32"),
   guaranteesList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
   contactInfo:

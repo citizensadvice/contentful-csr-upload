@@ -1,5 +1,5 @@
-SupplierId,supplierName,whilteLabelId,dataAvailable,SmallSupplier (PLACEHOLDER),supplierRank,overallRating,overallRank,Previous Rank,complaintsRating,complaintsNumber,contactRating,contactTime,contactEmail%,contactSocialMedia,guaranteeRating,guaranteesList,contactInformation,billingInformation,openingHours,fuelMix
-27,Energy Inc,,TRUE,FALSE,8,2.87,8,0,2,33.5,3.4,01:59,90.2,N/A,3,"- Vulnerability Commitment
+SupplierId,supplierName,whilteLabelId,dataAvailable,SmallSupplier (PLACEHOLDER),supplierRank,overallRating,overallRank,Previous Rank,complaintsRating,complaintsNumber,contactRating,contactTime,contactEmail%,guaranteeRating,guaranteesList,contactInformation,billingInformation,openingHours,fuelMix
+27,Energy Inc,,TRUE,FALSE,8,2.87,8,0,2,33.5,3.4,01:59,90.2,3,"- Vulnerability Commitment
 - Another commitment
 ","Telephone: 0800 000 0000,
 Email: enquiries@example.m,

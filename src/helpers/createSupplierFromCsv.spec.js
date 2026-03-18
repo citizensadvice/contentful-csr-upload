@@ -15,7 +15,6 @@ const row = {
   contactRating: "1.1",
   contactTime: "00:11:22",
   "contactEmail%": "100",
-  contactSocialMedia: "10,000",
   billAccuracyandMeteringRating: "3",
   contactWebchatSync: "00:01:22",
   "contactWebchatAsync%": "67.4",
@@ -62,7 +61,6 @@ describe("createSupplierFromCsv", () => {
       contactRating: 1.1,
       contactTime: "00:11:22",
       contactEmail: 100,
-      contactSocialMedia: "10,000",
       guaranteeRating: 1.1,
       guaranteesList: " - item 1\n - item 2",
       contactInfo: "[email@email.com](mailto:email@email.com)",
@@ -113,7 +111,6 @@ describe("createSupplierFromCsv", () => {
     const smallSupplier = createSupplierFromCsv(smallSupplierRow);
 
     expect(smallSupplier.contactTime).toEqual(undefined);
-    expect(smallSupplier.contactSocialMedia).toEqual(undefined);
     expect(smallSupplier.contactInfo).toEqual(undefined);
     expect(smallSupplier.guaranteesList).toEqual(undefined);
     expect(smallSupplier.billingInfo).toEqual(undefined);

@@ -44,9 +44,6 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.contactEmail = { "en-GB": supplier.contactEmail };
   contentfulSupplier.fields.contactRating = { "en-GB": supplier.contactRating };
   contentfulSupplier.fields.contactTime = { "en-GB": supplier.contactTime };
-  contentfulSupplier.fields.contactSocialMedia = {
-    "en-GB": supplier.contactSocialMedia,
-  };
   contentfulSupplier.fields.guaranteeRating = {
     "en-GB": supplier.guaranteeRating,
   };

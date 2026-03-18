@@ -14,7 +14,6 @@ const createSupplierFromCsv = (row) => {
     contactRating: parseFloat(row["contactRating"]),
     contactTime: row["contactTime"],
     contactEmail: parseFloat(row["contactEmail%"]),
-    contactSocialMedia: row["contactSocialMedia"],
     guaranteeRating: parseFloat(row["guaranteeRating"]),
     guaranteesList: row["guaranteesList"],
     complaintsRatingScore: parseFloat(row["complaintsRating"]),
