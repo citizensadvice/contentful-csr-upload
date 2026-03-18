@@ -2,7 +2,6 @@ export const expectedFields = {
   name: { "en-GB": "test supplier" },
   rank: { "en-GB": 99 },
   complaintsNumber: { "en-GB": 3 },
-  complaintsRating: { "en-GB": 3 },
   complaintsRatingScore: { "en-GB": 3 },
   billAccuracyAndMeteringRating: { "en-GB": 2 },
   billsAccuracySmart: { "en-GB": 78.9 },

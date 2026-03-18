@@ -9,7 +9,6 @@ const createSupplierFromCsv = (row) => {
     isSmall: isSmall(row["dataAvailable"]),
     rank: parseInt(row["supplierRank"]),
     overallRating: parseFloat(row["overallRating"]),
-    complaintsRatings: parseInt(row["complaintsRating"]),
     complaintsNumber: parseFloat(row["complaintsNumber"]),
     contactRating: parseFloat(row["contactRating"]),
     contactTime: row["contactTime"],

@@ -11,7 +11,6 @@ const testSupplier = {
   isSmall: false,
   rank: 99,
   overallRating: Number("3.5"),
-  complaintsRatings: 3,
   complaintsRatingScore: 3,
   billAccuracyAndMeteringRating: 2,
   billsAccuracySmart: Number("78.9"),

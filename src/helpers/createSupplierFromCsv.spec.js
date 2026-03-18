@@ -54,7 +54,6 @@ describe("createSupplierFromCsv", () => {
       isSmall: false,
       rank: 1,
       overallRating: 1.1,
-      complaintsRatings: 2,
       complaintsRatingScore: 2,
       complaintsNumber: 1.1,
       billAccuracyAndMeteringRating: 3,
@@ -91,7 +90,7 @@ describe("createSupplierFromCsv", () => {
 
     expect(smallSupplier.rank).toEqual(NaN);
     expect(smallSupplier.overallRating).toEqual(NaN);
-    expect(smallSupplier.complaintsRatings).toEqual(NaN);
+    expect(smallSupplier.complaintsRatingScore).toEqual(NaN);
     expect(smallSupplier.complaintsNumber).toEqual(NaN);
     expect(smallSupplier.contactRating).toEqual(NaN);
     expect(smallSupplier.billAccuracyAndMeteringRating).toEqual(NaN);
