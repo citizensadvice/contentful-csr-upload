@@ -11,7 +11,6 @@ const testSupplier = {
   isSmall: false,
   rank: 99,
   overallRating: Number("3.5"),
-  complaintsRatings: 3,
   complaintsRatingScore: 3,
   billAccuracyAndMeteringRating: 2,
   billsAccuracySmart: Number("78.9"),
@@ -21,7 +20,6 @@ const testSupplier = {
   contactRating: Number("3"),
   contactTime: "00:11:30",
   contactEmail: Number(99.3),
-  contactSocialMedia: "99,000",
   guaranteeRating: Number("4.32"),
   guaranteesList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
   contactInfo:

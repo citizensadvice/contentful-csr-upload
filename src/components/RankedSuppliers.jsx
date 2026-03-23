@@ -26,7 +26,7 @@ const RankedSuppliers = ({ suppliers }) => {
                 <Table.Cell>{s.name}</Table.Cell>
                 <Table.Cell>{s.rank}</Table.Cell>
                 <Table.Cell>{s.overallRating}</Table.Cell>
-                <Table.Cell>{s.complaintsRatings}</Table.Cell>
+                <Table.Cell>{s.complaintsRatingScore}</Table.Cell>
                 <Table.Cell>{s.contactRating}</Table.Cell>
                 <Table.Cell>{s.guaranteeRating}</Table.Cell>
               </Table.Row>

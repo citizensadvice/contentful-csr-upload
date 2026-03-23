@@ -6,7 +6,6 @@ const emptyContentfulSupplier = {
     name: null,
     rank: null,
     complaintsNumber: null,
-    complaintsRating: null,
     complaintsRatingScore: null,
     billAccuracyAndMeteringRating: null,
     billsAccuracySmart: null,
@@ -36,17 +35,11 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.complaintsNumber = {
     "en-GB": supplier.complaintsNumber,
   };
-  contentfulSupplier.fields.complaintsRating = {
-    "en-GB": supplier.complaintsRatings,
-  };
   contentfulSupplier.fields.dataAvailable = { "en-GB": !supplier.isSmall };
   contentfulSupplier.fields.overallRating = { "en-GB": supplier.overallRating };
   contentfulSupplier.fields.contactEmail = { "en-GB": supplier.contactEmail };
   contentfulSupplier.fields.contactRating = { "en-GB": supplier.contactRating };
   contentfulSupplier.fields.contactTime = { "en-GB": supplier.contactTime };
-  contentfulSupplier.fields.contactSocialMedia = {
-    "en-GB": supplier.contactSocialMedia,
-  };
   contentfulSupplier.fields.guaranteeRating = {
     "en-GB": supplier.guaranteeRating,
   };
