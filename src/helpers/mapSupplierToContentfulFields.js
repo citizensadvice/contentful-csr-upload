@@ -47,6 +47,9 @@ const mapSupplierToContentfulFields = (
   contentfulSupplier.fields.contactInfo = {
     "en-GB": markdownToJson(supplier.contactInfo),
   };
+  contentfulSupplier.fields.otherContactInfo = {
+    "en-GB": markdownToJson(supplier.otherContactInfo),
+  };
   contentfulSupplier.fields.billingInfo = {
     "en-GB": markdownToJson(supplier.billingInfo, { stripWhitespace: true }),
   };
