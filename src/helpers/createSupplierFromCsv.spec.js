@@ -32,6 +32,7 @@ const row = {
   guaranteeRating: "1.1",
   guaranteesList: " - item 1\n - item 2",
   contactInformation: "[email@email.com](mailto:email@email.com)",
+  waysToContact: "Web chat: No,\n Ring backs: No,\n Mobile hotline: No",
   billingInformation: "Debit card: Yes",
   openingHours: "M-F 0900 - 1900",
   fuelMix: "Renewable: 100%",
@@ -63,6 +64,7 @@ describe("createSupplierFromCsv", () => {
       guaranteeRating: 1.1,
       guaranteesList: " - item 1\n - item 2",
       contactInfo: "[email@email.com](mailto:email@email.com)",
+      otherContactInfo: "Web chat: No,\n Ring backs: No,\n Mobile hotline: No",
       billingInfo: "Debit card: Yes",
       openingHours: "M-F 0900 - 1900",
       fuelMix: "Renewable: 100%",
@@ -111,6 +113,7 @@ describe("createSupplierFromCsv", () => {
 
     expect(smallSupplier.contactTime).toEqual(undefined);
     expect(smallSupplier.contactInfo).toEqual(undefined);
+    expect(smallSupplier.otherContactInfo).toEqual(undefined);
     expect(smallSupplier.guaranteesList).toEqual(undefined);
     expect(smallSupplier.billingInfo).toEqual(undefined);
     expect(smallSupplier.fuelMix).toEqual(undefined);

@@ -24,6 +24,7 @@ const testSupplier = {
   guaranteesList: "- guarantee 1\n- guarantee 2\n- guarantee 3",
   contactInfo:
     "[01234 5678910](tel:012345678910)\n[www.example.com](https://www.example.com)",
+  otherContactInfo: "Web chat: No,\n Ring backs: No,\n Mobile hotline: No",
   billingInfo: "[billing@example.com](mailto:billing@example.com)",
   openingHours:
     "Monday: 9am - 5pm,\nTuesday: 9am - 5pm,\nWednesday: 9am - 5pm,\nThursday: 9am - 5pm,\nFriday: 9am - 5pm,\nSaturday: Closed,\nSunday: Closed",

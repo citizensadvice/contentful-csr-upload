@@ -31,10 +31,10 @@ describe("UploadScreen component", () => {
 
     expect(getByText(/Found 2 problems/)).toBeTruthy();
     expect(
-      getByText(/Row 3 - Too few fields: expected 20 fields but parsed 3/),
+      getByText(/Row 3 - Too few fields: expected 21 fields but parsed 3/),
     ).toBeTruthy();
     expect(
-      getByText(/Row 4 - Too many fields: expected 20 fields but parsed 60/),
+      getByText(/Row 4 - Too many fields: expected 21 fields but parsed 60/),
     ).toBeTruthy();
   });
 });
