@@ -64,6 +64,26 @@ export const expectedFields = {
       ],
     },
   },
+  otherContactInfo: {
+    "en-GB": {
+      content: [
+        {
+          content: [
+            {
+              data: {},
+              marks: [],
+              nodeType: "text",
+              value: "Web chat: No,\n Ring backs: No,\n Mobile hotline: No",
+            },
+          ],
+          data: {},
+          nodeType: "paragraph",
+        },
+      ],
+      data: {},
+      nodeType: "document",
+    },
+  },
   billingInfo: {
     "en-GB": {
       nodeType: "document",

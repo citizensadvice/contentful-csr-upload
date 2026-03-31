@@ -33,6 +33,7 @@ const createSupplierFromCsv = (row) => {
     billsAccuracyTraditional: parseFloat(row["billsAccuracyTraditional%"]),
     smartOperating: parseFloat(row["smartOperating%"]),
     contactInfo: row["contactInformation"],
+    otherContactInfo: row["waysToContact"],
     billingInfo: row["billingInformation"],
     openingHours: row["openingHours"],
     fuelMix: row["fuelMix"],

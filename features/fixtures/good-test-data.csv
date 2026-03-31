@@ -1,13 +1,9 @@
-SupplierId,supplierName,whilteLabelId,dataAvailable,SmallSupplier (PLACEHOLDER),supplierRank,overallRating,overallRank,Previous Rank,complaintsRatingScore,complaintsNumber,contactRating,contactTime,contactEmail%,guaranteeRating,guaranteesList,contactInformation,billingInformation,openingHours,fuelMix
+SupplierId,supplierName,whilteLabelId,dataAvailable,SmallSupplier (PLACEHOLDER),supplierRank,overallRating,overallRank,Previous Rank,complaintsRatingScore,complaintsNumber,contactRating,contactTime,contactEmail%,guaranteeRating,guaranteesList,contactInformation,waysToContact,billingInformation,openingHours,fuelMix
 27,Energy Inc,,TRUE,FALSE,8,2.87,8,0,2,33.5,3.4,01:59,90.2,3,"- Vulnerability Commitment
 - Another commitment
 ","Telephone: 0800 000 0000,
 Email: enquiries@example.m,
-Website: www.example.com,
-Web Chat: No,
-Ring backs: No,
-Mobile hotline: No,
-Minicom / Text: No,","Direct debit: Yes,
+Website: www.example.com,","Web Chat: No, Ring backs: No, Mobile hotline: No,Minicom / Text: No,","Direct debit: Yes,
 Cash or cheque: Yes,
 Prepayment: Yes,","Monday: 9am - 5pm,
 Tuesday: 9am - 5pm,
@@ -23,8 +19,8 @@ Other: 0%,"
 
 Email: help@example.com
 
-Website: www.example.com,","Direct debit: Yes
-Cash or cheque: Yes 
+Website: www.example.com,",,"Direct debit: Yes
+Cash or cheque: Yes
 Prepayment: No,","Monday: 9am – 5pm
 Tuesday: 9am – 5pm
 Wednesday: 9am – 5pm
@@ -39,7 +35,7 @@ Natural Gas: 73.5%
 Other: 5.6%,"
 109,example,,FALSE,TRUE,,,,,,,,,,,,"Telephone: 0000 000 0000
 Email: help@example.com
-Website: https://example.com","Direct debit: Yes
+Website: https://example.com",,"Direct debit: Yes
 Cash or cheque:  No
 Prepayment: No","Monday: 9am – 5pm
 Tuesday: 9am – 5pm
