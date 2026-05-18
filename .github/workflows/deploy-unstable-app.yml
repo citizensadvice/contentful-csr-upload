@@ -1,9 +1,8 @@
 name: Deploy unstable app
 on:
+  workflow_call:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+
 jobs:
   deploy:
     environment:

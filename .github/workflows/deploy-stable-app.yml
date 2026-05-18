@@ -1,5 +1,5 @@
 name: Deploy stable app
-on: workflow_dispatch
+on: workflow_call
 jobs:
   deploy:
     environment:
