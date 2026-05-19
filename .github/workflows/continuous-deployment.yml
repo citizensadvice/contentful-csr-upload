@@ -1,0 +1,23 @@
+name: Continuous Deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-unstable-app:
+    name: Deploy unstable app
+    uses: ./.github/workflows/deploy-unstable-app.yml
+    secrets: inherit
+
+  deploy-stable-app:
+    name: Deploy stable app
+    needs: [deploy-unstable-app]
+    uses: ./.github/workflows/deploy-stable-app.yml
+    secrets: inherit
