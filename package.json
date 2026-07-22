@@ -79,7 +79,8 @@
   },
   "overrides": {
     "@contentful/app-scripts": {
-      "contentful-management": "$contentful-management"
+      "contentful-management": "$contentful-management",
+      "adm-zip": "^0.6.0"
     },
     "tmp": "^0.2.4",
     "tar": "^7.5.10",
