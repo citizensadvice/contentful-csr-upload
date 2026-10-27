@@ -53,7 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@contentful/app-scripts": "2.5.12",
+    "@contentful/app-scripts": "4.1.16",
     "@eslint/compat": "^2.1.0",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^9.39.2",
