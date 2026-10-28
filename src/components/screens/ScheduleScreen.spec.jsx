@@ -12,7 +12,6 @@ import {
   contentfulSuppliers,
 } from "../../../test/fixtures/schedule-screen-state";
 import { createSupplier, updateSupplier } from "../../ContentfulWrapper";
-import { cleanup } from "@testing-library/react";
 
 vi.mock("../../ContentfulWrapper.js", () => {
   return {
@@ -34,25 +33,29 @@ vi.mock("@contentful/react-apps-toolkit", () => {
 });
 
 describe("ScheduleScreen component", () => {
-  renderWithProvider(<ScheduleScreen />, {
-    preloadedState: {
-      suppliers: { value: suppliers },
-      contentfulSuppliers: { value: contentfulSuppliers },
-      appStatus: { value: PROCESS_SUPPLIERS },
-    },
-  });
-
   it("creates a supplier for each supplier in the spreadsheet but not in Contentful", () => {
+    renderWithProvider(<ScheduleScreen />, {
+      preloadedState: {
+        suppliers: { value: suppliers },
+        contentfulSuppliers: { value: contentfulSuppliers },
+        appStatus: { value: PROCESS_SUPPLIERS },
+      },
+    });
     expect(createSupplier).toHaveBeenCalledTimes(3);
   });
 
   it("updates a supplier for each supplier in the spreadsheet but not in Contentful", () => {
+    renderWithProvider(<ScheduleScreen />, {
+      preloadedState: {
+        suppliers: { value: suppliers },
+        contentfulSuppliers: { value: contentfulSuppliers },
+        appStatus: { value: PROCESS_SUPPLIERS },
+      },
+    });
     expect(updateSupplier).toHaveBeenCalledTimes(3);
   });
 
   it("doesn't create or update anything unless the app status is 'PROCESSING_SUPPLIERS'", () => {
-    cleanup();
-    vi.resetAllMocks();
     renderWithProvider(<ScheduleScreen />, {
       preloadedState: {
         suppliers: { value: suppliers },
