@@ -10,7 +10,7 @@
     "@contentful/f36-workbench": "^4.21.1",
     "@contentful/field-editor-slug": "^3.5.3",
     "@contentful/react-apps-toolkit": "1.2.22",
-    "@reduxjs/toolkit": "^2.13.0",
+    "@reduxjs/toolkit": "^2.14.0",
     "contentful-management": "11.74.0",
     "contentful-rich-text-html-parser": "^1.8.13",
     "marked": "^17.0.5",
@@ -64,7 +64,7 @@
     "@types/node": "^24.10.1",
     "@vitejs/plugin-react": "^5.2.0",
     "cross-env": "10.1.0",
-    "dateformat": "^5.0.4",
+    "dateformat": "^5.0.5",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
@@ -74,8 +74,8 @@
     "npm-audit-resolver": "^3.0.0-RC.0",
     "playwright": "^1.56.1",
     "prettier": "^3.8.3",
-    "vite": "^8.3.4",
-    "vitest": "^5.0.5"
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
   },
   "homepage": "."
 }
